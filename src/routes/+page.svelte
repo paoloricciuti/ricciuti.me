@@ -1,2 +1,2 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>Hi i'm Paolo Ricciuti</h1>
+<p>I still need to build this thing but i needed a way to verify my bsky account so here we go</p>
