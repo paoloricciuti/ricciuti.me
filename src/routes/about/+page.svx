@@ -1,0 +1,3 @@
+# About me?
+
+I'm Paolo Ricciuti, i come from Italy 🇮🇹 and i'm a fullstack developer
