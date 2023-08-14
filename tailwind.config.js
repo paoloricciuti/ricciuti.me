@@ -3,14 +3,14 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
-			backgroundImage: {
-				divider: 'radial-gradient(circle, currentColor, transparent)'
+			backgroundColor: {
+				current: 'var(--bg)'
 			},
 			gridTemplateColumns: {
 				main: 'auto 1fr auto'
 			},
 			gridTemplateRows: {
-				main: 'auto 1fr auto'
+				main: 'auto auto 1fr'
 			}
 		}
 	},

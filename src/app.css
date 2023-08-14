@@ -4,4 +4,13 @@
 
 body {
 	height: 100vh;
+	--bg: theme(colors.zinc.100);
+	--color: theme(colors.zinc.800);
+	background-color: var(--bg);
+	color: var(--color);
+}
+
+.dark body {
+	--bg: theme(colors.zinc.800);
+	--color: theme(colors.zinc.100);
 }

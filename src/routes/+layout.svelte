@@ -1,22 +1,20 @@
 <script lang="ts">
 	import '../app.css';
 	import Logo from '$lib/components/Logo.svelte';
-	import Divider from '$lib/components/Divider.svelte';
 </script>
 
-<main class="relative grid h-full grid-cols-main grid-rows-main bg-zinc-800 text-white">
-	<Logo width="300" class="m-4" />
-	<header class="relative z-10 col-start-2 col-end-[-1] bg-inherit p-2 text-right">
-		My header
+<main class="relative grid h-full grid-cols-main grid-rows-main overflow-y-auto">
+	<header class="sticky top-0 col-start-1 col-end-[-1] bg-current p-2 font-mono sm:col-end-[-2]">
+		<h1 class="text-2xl">ricciuti.me</h1>
+		<p class="text-xs">tech blog and personal website of a mad scientist</p>
 	</header>
-	<Divider orientation="horizontal" class="col-span-full row-start-2" />
-
-	<aside class="relative">aside</aside>
-	<Divider orientation="vertical" class="z-20 col-start-2 row-span-full" />
+	<picture class="col-span-full max-w-xs p-4 sm:col-span-1">
+		<Logo width="100%" />
+	</picture>
+	<aside class="relative hidden sm:block">aside something much longer</aside>
 
 	<section class="p-4">
 		<slot />
 	</section>
-	<Divider orientation="vertical" class="col-start-3 row-span-full" />
-	<section>suggestions</section>
+	<section class="hidden sm:block">suggestions</section>
 </main>
