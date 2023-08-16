@@ -1,0 +1,5 @@
+---
+title: My other article
+---
+
+Very very cool article
