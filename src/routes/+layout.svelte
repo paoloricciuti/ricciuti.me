@@ -18,7 +18,7 @@
 		<Logo width="100%" />
 	</picture>
 
-	<section class="prose dark:prose-invert md:prose-md p-4 font-mono">
+	<section class="md:prose-md prose min-w-full p-4 font-mono dark:prose-invert">
 		<slot />
 	</section>
 	<section class="hidden lg:block">suggestions</section>

@@ -6,7 +6,9 @@ function is_svelte_component(obj: unknown): obj is ComponentType {
 }
 
 export const metadata_schema = z.object({
-	title: z.string().min(2)
+	title: z.string().min(2).toLowerCase(),
+	preview: z.string(),
+	preview_html: z.string()
 });
 
 export const article_list_schema = z.array(

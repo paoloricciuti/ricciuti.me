@@ -39,6 +39,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"remark-preview": "^1.0.2",
 		"vite-plugin-dynamic-import": "^1.5.0",
 		"zod": "^3.22.1"
 	}
