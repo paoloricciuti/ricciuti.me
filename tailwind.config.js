@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+	darkMode: 'class',
 	content: ['./src/**/*.{html,js,svelte,ts,svx}', './mdsvex.config.js'],
 	theme: {
 		extend: {
+			screens: {
+				'2xs': '350px'
+			},
 			colors: {
 				brand: {
 					50: '#fff5ec',

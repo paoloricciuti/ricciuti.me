@@ -16,8 +16,9 @@
 <header
 	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 bg-current p-4 font-mono"
 >
+	<ThemeSwitcher />
 	<h1 class="text-4xl">ricciuti.me</h1>
-	<p class="text-xs opacity-50">tech blog and personal website of a mad scientist</p>
+	<p class="text-center text-xs opacity-50">tech blog and personal website of a mad scientist</p>
 	<ul class="mt-4 flex flex-wrap justify-center gap-2">
 		{#each Object.entries(pages) as [title, href]}
 			{@const current_page = $page.url.pathname === href}
@@ -38,8 +39,6 @@
 		<slot />
 	</section>
 </main>
-
-<ThemeSwitcher />
 
 <style lang="postcss">
 	@media (min-width: theme(screens.sm)) {
