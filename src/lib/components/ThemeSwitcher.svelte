@@ -36,7 +36,7 @@
 			window.localStorage.setItem('ricciuti_me_theme', theme);
 			document.documentElement.classList.add(theme);
 		}}
-		class="2xs:fixed relative right-4 top-4 z-50 h-8 w-8 justify-self-end rounded-full bg-zinc-50 p-1 text-brand-600 shadow-[0_0_.25rem] shadow-brand-400 dark:bg-zinc-900"
+		class="2xs:fixed 2xs:right-4 2xs:top-4 relative z-50 h-8 w-8 justify-self-end"
 	>
 		{#if theme === 'light'}
 			<span
@@ -48,7 +48,7 @@
 					key: 'theme'
 				}}
 			>
-				<Sun />
+				<Moon />
 			</span>
 		{:else}
 			<span
@@ -60,7 +60,7 @@
 					key: 'theme'
 				}}
 			>
-				<Moon />
+				<Sun />
 			</span>
 		{/if}
 	</button>
