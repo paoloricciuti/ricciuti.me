@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 body {
-	height: 100vh;
 	--bg: theme(colors.zinc.100);
 	--color: theme(colors.zinc.800);
+	--brand: theme(colors.brand.100);
 	background-color: var(--bg);
+	background-image: linear-gradient(var(--bg) 20%, var(--brand));
+	background-attachment: fixed;
 	color: var(--color);
 }
 
 .dark body {
 	--bg: theme(colors.zinc.800);
 	--color: theme(colors.zinc.100);
+	--brand: theme(colors.brand.950);
 }
