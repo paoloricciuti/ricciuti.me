@@ -7,14 +7,14 @@
 	<meta name="viewport" content="width=device-width" />
 	<script>
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
-		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && media.matches)) {
+		if (localStorage.ricciuti_me_theme === 'dark' || (!('ricciuti_me_theme' in localStorage) && media.matches)) {
 			document.documentElement.classList.add('dark');
 		} else {
 			document.documentElement.classList.remove('dark');
 		}
 		media.addEventListener("change", (media) => {
 			console.log(media);
-			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && media.matches)) {
+			if (localStorage.ricciuti_me_theme === 'dark' || (!('ricciuti_me_theme' in localStorage) && media.matches)) {
 				document.documentElement.classList.add('dark');
 			} else {
 				document.documentElement.classList.remove('dark');

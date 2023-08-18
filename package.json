@@ -39,7 +39,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"lucide-svelte": "^0.268.0",
 		"remark-preview": "^1.0.2",
+		"sveltekit-embed": "^0.0.12",
 		"vite-plugin-dynamic-import": "^1.5.0",
 		"zod": "^3.22.1"
 	}

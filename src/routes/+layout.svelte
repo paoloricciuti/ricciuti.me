@@ -2,12 +2,14 @@
 	import '../app.css';
 	import Logo from '$lib/components/Logo.svelte';
 	import { page } from '$app/stores';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 
 	const pages = {
 		home: '/',
 		about: '/about',
 		speaking: '/speaking',
-		contacts: '/contacts'
+		contacts: '/contacts',
+		projects: '/projects'
 	};
 </script>
 
@@ -37,8 +39,12 @@
 	</section>
 </main>
 
-<style>
-	li:not(:last-child)::after {
-		content: '|';
+<ThemeSwitcher />
+
+<style lang="postcss">
+	@media (min-width: theme(screens.sm)) {
+		li:not(:last-child)::after {
+			content: '|';
+		}
 	}
 </style>
