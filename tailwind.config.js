@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}', './mdsvex.config.js'],
+	content: ['./src/**/*.{html,js,svelte,ts,svx}', './mdsvex.config.js'],
 	theme: {
 		extend: {
 			colors: {
