@@ -49,7 +49,7 @@ your own risk)
 	{#each projects as project}
 		{@const title = project.link ? `${project.title} (${project.link})` : project.title}
 		<li class="rounded-lg bg-brand-200/25 p-4 dark:bg-zinc-950/60">
-			<a aria-labelledby="{title} description" href={title}>
+			<a aria-labelledby="{title} description" href={project.link}>
 				<strong>{title}</strong>
 				{#if project.img}
 					<img class="m-0 mt-2" src={project.img} alt="{project.title} preview" />
