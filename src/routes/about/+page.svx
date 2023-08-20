@@ -13,7 +13,7 @@ I'm glad you found this blog and i guess i'm also glad you want to know somethin
 
 My name is Paolo Ricciuti and i come from a small city in Italy, i have ~ `new Date().getFullYear() - 1989` years.
 
-I have a computer science degree and i started developing when i had 17 years (with PHP 4 😱).
+I have a computer science degree and i started developing when i was 17 years (with PHP 4 😱).
 
 Nowadays i work at [Mainmatter](https://mainmatter.com) as Fullstack Senior Software Engineer.
 

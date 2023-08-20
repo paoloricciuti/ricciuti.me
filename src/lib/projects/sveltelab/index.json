@@ -1,0 +1,6 @@
+{
+	"title": "SvelteLab",
+	"description": "A SuperCharged svelte and sveltekit REPL me and Antonio Sarcevic made to participate in the svelte hackaton (we won 🍾)",
+	"link": "https://sveltelab.dev",
+	"order": 100
+}
