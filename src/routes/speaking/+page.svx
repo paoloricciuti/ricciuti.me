@@ -1,28 +1,8 @@
 <script>
 	import { YouTube } from 'sveltekit-embed';
-	const talks = [
-
-		{
-			title: 'Hacking SvelteLab @ Svelte Summit 2023',
-			link: 'UKZDcDNAHXY'
-		},
-		{
-			title: 'Sharable State @ Svelte Society London Meetup',
-			link: 'DXQl1G54DJY'
-		},
-		{
-			title: 'SvelteLab @ CodingCat',
-			link: 'S1iakhstHlc'
-		},
-		{
-			title: 'Hacking Sveltelab @ Svelte Society London Meetup',
-			link: 'VkVyP1TgH64'
-		},
-		{
-			title: 'Presenting SvelteLab @ This Week in Svelte',
-			link: 'H2kOO5mvUQs'
-		}
-	];
+	const talks = Object.values(import.meta.glob("$lib/talks/*.json", {
+		eager: true,
+	}));
 </script>
 
 # speaking

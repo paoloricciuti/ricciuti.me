@@ -47,7 +47,7 @@ your own risk)
 
 <ul class="list-none p-0">
 	{#each projects as project}
-		{@const title = project.link ? `${project.title} (${project.link})` : project.title}
+		{@const title = project.title}
 		<li class="rounded-lg bg-brand-200/25 p-4 dark:bg-zinc-950/60">
 			<a aria-labelledby="{title} description" href={project.link}>
 				<strong>{title}</strong>

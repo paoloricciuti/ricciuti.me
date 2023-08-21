@@ -1,0 +1,6 @@
+{
+	"title": "sveltekit-search-params",
+	"description": "The fastest way in sveltekit to read and WRITE query parameters",
+	"link": "https://github.com/paoloricciuti/sveltekit-search-params",
+	"order": 200
+}
