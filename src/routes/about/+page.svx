@@ -2,6 +2,10 @@
 	import me from "$lib/assets/me.jpg";
 </script>
 
+<svelte:head>
+
+<title>ricciuti.me - about</title>
+</svelte:head>
 # about
 
 <main>

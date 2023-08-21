@@ -2,6 +2,9 @@
 	export let data;
 </script>
 
+<svelte:head>
+	<title>ricciuti.me</title>
+</svelte:head>
 <h1>home</h1>
 <p>
 	hello, fellow internet surfer, here lies the personal website and tech blog of paolo ricciuti,
@@ -16,7 +19,7 @@
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html article.preview}
 		</section>
-		<a class="bg-brand-500 justify-self-start p-2 px-4 no-underline" href="/blog/{article.slug}"
+		<a class="justify-self-start bg-brand-500 p-2 px-4 no-underline" href="/blog/{article.slug}"
 			>full article</a
 		>
 	</article>

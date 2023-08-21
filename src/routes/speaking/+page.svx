@@ -5,6 +5,11 @@
 	}));
 </script>
 
+<svelte:head>
+
+<title>ricciuti.me - speaking</title>
+</svelte:head>
+
 # speaking
 
 I know it may sound weird for someone but i love public speaking. I try to keep every talk entertaining while providing the best value possible.

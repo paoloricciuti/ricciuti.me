@@ -39,6 +39,10 @@
 		.sort((projectA, projectB) => (projectA.order ?? 0) - (projectB.order ?? 0));
 </script>
 
+<svelte:head>
+	<title>ricciuti.me - projects</title>
+</svelte:head>
+
 <h1>projects</h1>
 
 Here's a small list of projects i worked on and that i'm proud of enough to share them with you (for

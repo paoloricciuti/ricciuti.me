@@ -1,3 +1,7 @@
+<svelte:head>
+<title>ricciuti.me - contacts</title>
+</svelte:head>
+
 # contacts
 
 Contacting me it's fairly easy since you can find me all over the web.
