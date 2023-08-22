@@ -1,5 +1,7 @@
 <script lang="ts">
 	import '../app.css';
+	import '../tokens.css';
+	import '../shiki.css';
 	import Logo from '$lib/components/Logo.svelte';
 	import { page } from '$app/stores';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';

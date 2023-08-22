@@ -9,15 +9,19 @@
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
 		if (localStorage.ricciuti_me_theme === 'dark' || (!('ricciuti_me_theme' in localStorage) && media.matches)) {
 			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
+		} else if (localStorage.ricciuti_me_theme === 'light' || (!('ricciuti_me_theme' in localStorage) && !media.matches)) {
+			document.documentElement.classList.add('light');
 		}
 		media.addEventListener("change", (media) => {
-			console.log(media);
 			if (localStorage.ricciuti_me_theme === 'dark' || (!('ricciuti_me_theme' in localStorage) && media.matches)) {
 				document.documentElement.classList.add('dark');
 			} else {
 				document.documentElement.classList.remove('dark');
+			}
+			if (localStorage.ricciuti_me_theme === 'light' || (!('ricciuti_me_theme' in localStorage) && !media.matches)) {
+				document.documentElement.classList.add('light');
+			} else {
+				document.documentElement.classList.remove('light');
 			}
 		})
 	</script>
