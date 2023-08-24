@@ -1,5 +1,5 @@
-import { get_articles } from '$lib/articles/get-articles.js';
-import { article_schema } from '$lib/schemas/index.js';
+import { get_articles, calculate_similarity } from '$lib/articles/utils.js';
+import { article_schema, type Article } from '$lib/schemas/index.js';
 
 export function entries() {
 	const articles = get_articles();
@@ -8,6 +8,13 @@ export function entries() {
 
 export async function load({ params: { slug } }) {
 	const imported = await import(`$lib/articles/${slug}/index.svx`);
+	const suggestions_slugs = calculate_similarity(slug).slice(0, 3);
+	const suggestions: { slug: string; article: Article['metadata'] }[] = [];
+	for (const { slug } of suggestions_slugs) {
+		const suggestion = await import(`$lib/articles/${slug}/index.svx`);
+		const validated_suggestion = article_schema.parse(suggestion);
+		suggestions.push({ slug, article: validated_suggestion.metadata });
+	}
 	const validated = article_schema.parse(imported);
-	return validated;
+	return { article: validated, suggestions };
 }

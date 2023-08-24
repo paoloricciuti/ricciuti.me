@@ -1,4 +1,4 @@
-import { get_articles } from '$lib/articles/get-articles';
+import { get_articles } from '$lib/articles/utils';
 import { json } from '@sveltejs/kit';
 
 export const prerender = true;

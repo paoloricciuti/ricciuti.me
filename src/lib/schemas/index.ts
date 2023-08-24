@@ -30,3 +30,5 @@ export const article_schema = z
 			metadata: article.metadata
 		};
 	});
+
+export type Article = z.infer<typeof article_schema>;
