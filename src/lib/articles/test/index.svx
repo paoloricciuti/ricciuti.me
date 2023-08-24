@@ -16,7 +16,9 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum facere optio nam
 ```
 
 ```ts
-const x = {
+// @errors: 2339, 2551
+const test = {
 	test: true
 };
+test.tes;
 ```
