@@ -16,12 +16,8 @@
 		eager: true
 	});
 
-	type Project = {
-		img: string;
-	} & ProjectData;
-
 	const projects = Object.entries(projects_data)
-		.reduce<Project[]>((prev, [folder, module]) => {
+		.map(([folder, module]) => {
 			// remove unneeded default
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			const { default: _, ...data } = module;
@@ -33,10 +29,9 @@
 					img = img_import.default;
 				}
 			}
-			prev.push({ ...data, img });
-			return prev;
-		}, [])
-		.sort((projectA, projectB) => (projectA.order ?? 0) - (projectB.order ?? 0));
+			return { ...data, img };
+		})
+		.sort((project_a, project_b) => (project_a.order ?? 0) - (project_b.order ?? 0));
 </script>
 
 <svelte:head>

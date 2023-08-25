@@ -1,37 +1,22 @@
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
 import preview, { htmlFormatter, textFormatter } from 'remark-preview';
-import { renderCodeToHTML, runTwoSlash, createShikiHighlighter } from 'shiki-twoslash';
+import { getHighlighter } from 'shiki';
 
-const highlighter = await createShikiHighlighter({ theme: 'css-variables' });
-const supported = ['js', 'javascript', 'ts', 'typescript', 'tsx', 'jsx', 'json', 'jsn'];
+const highlighter = await getHighlighter({ theme: 'css-variables' });
 
 const config = defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
 	highlight: {
 		highlighter(code, lang) {
-			let twoslash = {
-				code
-			};
-			const support_twoslash = supported.includes(lang);
-			if (support_twoslash) {
-				twoslash = runTwoSlash(code, lang);
-			}
-			const html = renderCodeToHTML(
-				twoslash.code,
-				lang,
-				{ twoslash: support_twoslash },
-				{
-					theme: 'css-variables',
-					includeJSDocInHover: true
-				},
-				highlighter,
-				twoslash
-			);
-			return `{@html \`${html.replace('%ts%', 'ts')}\`}`;
-		}
+			const html = highlighter.codeToHtml(code, { lang });
+			return `{@html \`${html
+				.replace('%ts%', 'ts')
+				.replaceAll('`', '\\`')
+				.replaceAll('{', '\\{')}\`}`;
+		},
 	},
 	smartypants: {
-		dashes: 'oldschool'
+		dashes: 'oldschool',
 	},
 
 	remarkPlugins: [
@@ -41,14 +26,14 @@ const config = defineConfig({
 		preview(
 			htmlFormatter({
 				length: 250,
-				maxBlocks: 2
+				maxBlocks: 2,
 			}),
 			{
-				attribute: 'preview_html'
-			}
-		)
+				attribute: 'preview_html',
+			},
+		),
 	],
-	rehypePlugins: []
+	rehypePlugins: [],
 });
 
 export default config;

@@ -5,7 +5,7 @@ export default {
 	theme: {
 		extend: {
 			screens: {
-				'2xs': '350px'
+				'2xs': '350px',
 			},
 			colors: {
 				brand: {
@@ -19,19 +19,19 @@ export default {
 					700: '#cc2902',
 					800: '#a1210b',
 					900: '#821e0c',
-					950: '#3d1612'
-				}
+					950: '#3d1612',
+				},
 			},
 			backgroundColor: {
-				current: 'var(--bg)'
+				current: 'var(--bg)',
 			},
 			gridTemplateColumns: {
-				main: '1fr auto'
+				main: '1fr auto',
 			},
 			gridTemplateRows: {
-				main: 'auto auto 1fr'
-			}
-		}
+				main: 'auto auto 1fr',
+			},
+		},
 	},
-	plugins: [require('@tailwindcss/typography')]
+	plugins: [require('@tailwindcss/typography')],
 };

@@ -3,7 +3,7 @@ import { article_schema } from '$lib/schemas';
 
 export function get_articles() {
 	const articles_import = import.meta.glob('$lib/articles/**/index.svx', {
-		eager: true
+		eager: true,
 	});
 	const articles = [];
 	for (const article_location in articles_import) {
@@ -12,15 +12,20 @@ export function get_articles() {
 		const { metadata } = article_schema.parse(articles_import[article_location]);
 		articles.push({
 			slug,
-			...metadata
+			...metadata,
 		});
 	}
+	articles.sort((article_a, article_b) => {
+		const article_a_data = new Date(article_a.published);
+		const article_b_data = new Date(article_b.published);
+		return article_a_data.getTime() - article_b_data.getTime();
+	});
 	return articles;
 }
 
 export function calculate_similarity(slug: string) {
 	const embeddings_import = import.meta.glob('$lib/articles/**/embedding.json', {
-		eager: true
+		eager: true,
 	});
 	const embedding_map = new Map<string, number[]>();
 	for (const [path, embedding] of Object.entries(embeddings_import)) {

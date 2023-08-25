@@ -13,6 +13,6 @@ export function spin(node: HTMLElement, { duration }: { duration: number }) {
             ${Math.min(100, 1000 - 1000 * t)}%,
             ${Math.min(50, 500 - 500 * t)}%
           );`;
-		}
+		},
 	};
 }
