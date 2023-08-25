@@ -11,7 +11,7 @@
 		about: '/about',
 		speaking: '/speaking',
 		contacts: '/contacts',
-		projects: '/projects'
+		projects: '/projects',
 	};
 </script>
 
@@ -37,7 +37,7 @@
 		<Logo width="100%" />
 	</picture>
 
-	<section class="md:prose-md prose min-w-full p-4 font-mono dark:prose-invert">
+	<section class="md:prose-md prose min-w-full max-w-full p-4 font-mono dark:prose-invert">
 		<slot />
 	</section>
 </main>
