@@ -7,34 +7,34 @@ published: 2023-08-25
 	import Magic from "$lib/components/Magic.svelte";
 </script>
 
-Let's be honest for a moment. There's no real reason at all to write a custom blog when there are pre-builded alternatives out there that also give you more exposure, out of the box integrations with the most common content providers, a rich text experience and much much more.
+Let's be honest for a moment. There's no real reason at all to write a custom blog when there are pre-built alternatives out there that also give you more exposure, out-of-the-box integrations with the most common content providers, a rich text experience, and much, much more.
 
-But building your own blog provide a feature that no other platform can dream of: a free blog post!
+But building your own blog provides a feature that no other platform can dream of: a free blog post!
 
-That's right, this is the obligatory **How i wrote this blog** post. And i know what you are thinking: who cares! But i feel like while building what you are reading right now i've made some decisions that can benefit you so here we are.
+That's right. This is the obligatory "**How I Wrote This Blog**" post. And I know what you are thinking: who cares? But I feel like, while building what you are reading right now, I've made some decisions that can benefit you, so here we are.
 
 ## The stack
 
-I dare to say i chose a pretty simple stack, let's go over every decision and explain them one by one.
+I dare to say I chose a pretty simple stack. Let's go over every decision and explain them one by one.
 
-- **hosting:** vercel. Yeah i know...BORING! But that's what i want my hosting to be...i don't want to do fancy stuff with custom VPS and if you want to host your personal website on raw AWS i'm calling the tech police because you are a criminal 🚨 Vercel handles everything for you, the SSL, the preview branches, has a neat dashboard that gives you control over everything you need. I used to be a Netli-fun but since it's pretty similar to Vercel but i switched to the latter because it can also stream from lambdas. I'm not using that feature right now but you know, better be safe than sorry.
-- **database:** absolutely no db! How i hear you say? This is a static website baby...the code is hosted on github and i just store everything publicly...you don't need a database if you hardcode everything. Joking aside at the current state i don't feel the need for a database and given that it adds a lot of complexity i'm fine with this static website rebuilding every time i make a change to an article. #githubasdatabase
-- **framework:** you know it, there's no reason for me to say it. Well i'll say it anyway...**SVELTEKIT!** I admit in the beginning i was thinking of Astro: i think it's a super-powerful framework especially for static websites like this one. And i could've used Svelte there too. But i'm just too used at Sveltekit and it's not like the static site generation story with it is bad. Will this be a mistake? Only time will tell, in the meantime i had a lot of fun building this and i'm totally fine with it.
-- **css:** ok time to shake the water a bit...for the css framework i used Tailwind! Ok now please put down you pitchfork, dip your torch in the water, take a deep breath and listen to my reasons. I was quite against Tailwind in the beginning (yeah i know, it's what everybody says) but then i started to realize it's values. It allows you to move fast because you don't have to switch context but much more importantly it provide you with a coherent design system and it's also better for the user because you'll likely end up shipping less and more cacheable css. And given that i will probably be the only one working on this blog i don't feel bad at all for making this decision.
-- **markdown:** what i'm using in this very moment to speak to you through the web is markdown. I'm specifically using mdsvex which is a preprocessor for svelte that allows me to write markdown sprinkled with svelte components (i hope i will be writing a lot of interactive blog post to make this at full use)
-- **syntax highlight:** this being a dev blog means a lot of code snippets so the highlighter is something really important. I went for `shiki` to get beautiful customizable themes. Initially I went with `shiki-twoslash` that added Typescript syntax highlight to the snippets but it was really too much of a hassle because you had to recreate the whole import chain for every snippet of code or else the build would've failed.
+- **hosting:** vercel. Yeah i know...BORING! But that's what i want my hosting to be. I don't want to do fancy stuff with custom VPS, and if you want to host your personal website on raw AWS, I'm calling the tech police because you are a criminal 🚨. Vercel handles everything for you: the SSL, the preview branches, it has a neat dashboard that gives you control over everything you need. I used to be a Netli-fan but since it's pretty similar to Vercel, I switched to the latter because it can also stream from lambdas. I'm not using that feature right now but you know, better be safe than sorry.
+- **database:** absolutely no db! "How?" do I hear you say? This is a static website baby. The code is hosted on GitHub and I just store everything publicly. You don't need a database if you hardcode everything. Joking aside, in the current state, I don't feel the need for a database. Given that it adds a lot of complexity, I'm fine with this static website rebuilding every time i make a change to an article. #githubasdatabase
+- **framework:** you know it, there's no reason for me to say it. Well i'll say it anyway...**SVELTEKIT!** I admit in the beginning i was thinking of Astro: I think it's a super-powerful framework, especially for static websites like this one. And i could've used Svelte there too. But I'm just too used to Sveltekit, and it's not like the static site generation story with it is bad. Will this be a mistake? Only time will tell. In the meantime I had a lot of fun building this and I'm totally fine with it.
+- **css:** ok time to stir the water a bit. For the css framework, I used Tailwind! Ok now please put down you pitchfork, dip your torch in the water, take a deep breath and listen to my reasons. I was quite against Tailwind in the beginning (yeah i know, it's what everybody says) but then I started to realize it's value. It allows you to move fast because you don't have to switch context but, much more importantly, it provides you with a coherent design system and it's also better for the user because you'll likely end up shipping less and more cacheable css. And given that I will probably be the only one working on this blog I don't feel bad at all for making this decision.
+- **markdown:** what I'm using in this very moment to speak to you through the web is markdown. I'm specifically using mdsvex, which is a preprocessor for svelte that allows me to write markdown sprinkled with svelte components (i hope i will be writing a lot of interactive blog post to make this at full use)
+- **syntax highlight:** this being a dev blog means a lot of code snippets, so the highlighter is something really important. I went for `shiki` to get beautiful customizable themes. Initially, I went with `shiki-twoslash` that added Typescript syntax highlight to the snippets but it was really too much of a hassle because you had to recreate the whole import chain for every snippet of code, or else the build would've failed.
 
 ## The details
 
-At the end of the day the implementation is pretty standard but i think there are some neaty tricks that i've used that can be useful if you too want to write your blog with SvelteKit.
+At the end of the day the implementation is pretty standard but i think there are some neaty tricks that I've used that can be useful if you too want to write your blog with SvelteKit.
 
 ### adapter-static
 
-The blog it's not really dynamic, all the content it's there at build time so `adapter-static` made perfect sense to have fast, CDN-served static files. This also means that i can be a bit more relaxed in the performance of my load functions and syntax highlighter. Everything is done at build time so the user will not suffer any of the drawbacks.
+The blog it's not really dynamic, all the content it's there at build time so `adapter-static` made perfect sense to have fast, CDN-served static files. This also means that I can be a bit more relaxed in the performance of my load functions and syntax highlighter. Everything is done at build time so the user will not suffer any of the drawbacks.
 
 ### writing experience
 
-I wanted to have a straightforward way of authoring my blog posts. I often code at the phone and i will probably write most of my blog posts there too. Now while writing markdown is relatively simple, writing code is a bit more difficult and i wanted a way to have all my blog posts in one folder, the slug should be inferred from the name of the folder and the folder would also allow me to have assets that i need one import away. So this is the folder structure that i have
+I wanted to have a straightforward way of authoring my blog posts. I often code at the phone, and I will probably write most of my blog posts there too. Now, while writing markdown is relatively simple, writing code is a bit more difficult. I wanted a way to have all my blog posts in one folder, the slug should be inferred from the name of the folder and the folder would also allow me to have the assets that I need one import away. So this is the folder structure that I have
 
 ```bash
 lib/
@@ -49,16 +49,16 @@ lib/
         └── index.svx
 ```
 
-as you can probably spot the convention is that i will always have an `index.svx` inside a folder named as the slug. How do i display them then? `import.meta.glob` and `import` to the rescue.
+as you can probably spot, the convention is that i will always have an `index.svx` inside a folder named as the slug. How do I display them then? `import.meta.glob` and `import` to the rescue.
 
-I created an utility function that import all the articles and their metadata using `import.meta.glob` from vite and i'm using that in a server endpoint:
+I created an utility function that imports all the articles and their metadata using `import.meta.glob` from `vite` and I'm using that in a server endpoint:
 
 ```ts
 export function get_articles() {
 	// import every index.svx in every folder, the metadata is provided by mdsvex
 	// based on the frontmatter and the plugins installed
 	const articles_import = import.meta.glob('$lib/articles/**/index.svx', {
-		eager: true
+		eager: true,
 	});
 	const articles = [];
 	// loop over the keys of the import.meta.glob
@@ -71,7 +71,7 @@ export function get_articles() {
 		// add everything in the array
 		articles.push({
 			slug,
-			...metadata
+			...metadata,
 		});
 	}
 	// sort it by date
@@ -131,7 +131,7 @@ And here's how it get's rendered on the page
 
 ### projects and speaking
 
-Those are things that should be a bit more set in stone than the blog posts but i will occasionally update them. In the speaking page there are all the talks that i gave and in the projects page every project that i'm proud enough to have the will to share with you. I still wanted an organized way to display them. So i went with a similar trick to the one i used for the blog posts: every project it's a folder in `lib` and inside that folder there's an img.png that will be used as the project image and an index.json that contain data about the project. The folder structure looks like this
+These are elements that are expected to be more static than the blog posts, yet I may update them from time to time. On the "speaking" page, you can find a collection of all the talks I've given, while the "projects" page showcases select projects I'm proud enough to be willing to share with you. Despite their distinct nature, I wanted a cohesive presentation for both. This led me to employ a technique similar to the one I utilized for the blog posts: each project resides within its own folder within the lib directory. Inside this folder, you'll discover an img.png file, which serves as the project image, and an index.json file containing relevant project data. The resulting folder structure is as follows:
 
 ```bash
 lib/
@@ -158,7 +158,7 @@ with every index.json having the following structure
 }
 ```
 
-another subtle trick is having the order being a multiple of 100 initially...this allows me to sneak a new project in between old ones (this broke if i want to sneak 100 project in the middle but i have a life and i will never build 100 project that i'm proud of).
+another subtle trick is having the order initially be a multiple of 100.This allows me to sneak a new project in between old ones (this broke if i want to sneak 100 project in the middle but i have a life and i will never build 100 project that i'm proud of).
 
 The import is done directly in the `+page.svelte`
 
@@ -167,12 +167,12 @@ The import is done directly in the `+page.svelte`
 const projects_data = import.meta.glob<{ default: ProjectData } & ProjectData>(
 	'$lib/projects/**/index.json',
 	{
-		eager: true
-	}
+		eager: true,
+	},
 );
 // import every image
 const imgs = import.meta.glob<{ default: string }>('$lib/projects/**/img.png', {
-	eager: true
+	eager: true,
 });
 
 type Project = {
@@ -199,11 +199,11 @@ const projects = Object.entries(projects_data)
 	.sort((projectA, projectB) => (projectA.order ?? 0) - (projectB.order ?? 0));
 ```
 
-in the speaking page it's even easier since i don't need a folder to contain the image so i just have literally a series of json files named with multiple of 100 and i import them in the `+page.svelte` file.
+in the speaking page it's even simpler since i don't need a folder to contain the image so i just have literally a series of json files named with multiple of 100 and i import them in the `+page.svelte` file.
 
 ### suggestions
 
-The last feature i want to highlight is the suggestions that you can find at the end of this blog post (unless this will be the only blog post that i will ever post). What you will see is likely a series of three articles that are pretty close in terms of content to this one. How i hear you ask? <Magic>With AI!</Magic> I will write a more thorough post in the future to show you the exact workflow that allows me to have suggestions based on similarity but the gist of it is that i'm using embeddings from OpenAPI and a cosine similarity function that i've copied from Stack Overflow
+The final aspect I'd like to draw your attention to is the suggestions provided at the conclusion of this blog post (unless this will be the only blog post i will ever post). What you'll notice is a collection of three articles that closely align with the content of this one. You might wonder, how is this achieved? Well, <Magic>with the power of AI!</Magic> I will write a more thorough post in the future to show you the exact workflow that allows me to have suggestions based on similarity, but the gist of it is that i'm using embeddings from OpenAPI and a cosine similarity function that i've copied from Stack Overflow
 
 ## Conclusions
 
