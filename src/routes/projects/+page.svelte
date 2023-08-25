@@ -9,11 +9,11 @@
 	const projects_data = import.meta.glob<{ default: ProjectData } & ProjectData>(
 		'$lib/projects/**/index.json',
 		{
-			eager: true
-		}
+			eager: true,
+		},
 	);
 	const imgs = import.meta.glob<{ default: string }>('$lib/projects/**/img.png', {
-		eager: true
+		eager: true,
 	});
 
 	const projects = Object.entries(projects_data)
@@ -40,7 +40,7 @@
 
 <h1>projects</h1>
 
-Here's a small list of projects i worked on and that i'm proud of enough to share them with you (for
+Here's a small list of projects I worked on and that I'm proud of enough to share them with you (for
 the unfiltered list just go check my&nbsp;<a href="https://github.com/paoloricciuti">GitHub</a> at
 your own risk)
 

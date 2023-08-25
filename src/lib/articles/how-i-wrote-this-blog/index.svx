@@ -1,5 +1,5 @@
 ---
-title: how i wrote this blog
+title: how I wrote this blog
 published: 2023-08-25
 ---
 
@@ -17,16 +17,16 @@ That's right. This is the obligatory "**How I Wrote This Blog**" post. And I kno
 
 I dare to say I chose a pretty simple stack. Let's go over every decision and explain them one by one.
 
-- **hosting:** vercel. Yeah i know...BORING! But that's what i want my hosting to be. I don't want to do fancy stuff with custom VPS, and if you want to host your personal website on raw AWS, I'm calling the tech police because you are a criminal 🚨. Vercel handles everything for you: the SSL, the preview branches, it has a neat dashboard that gives you control over everything you need. I used to be a Netli-fan but since it's pretty similar to Vercel, I switched to the latter because it can also stream from lambdas. I'm not using that feature right now but you know, better be safe than sorry.
-- **database:** absolutely no db! "How?" do I hear you say? This is a static website baby. The code is hosted on GitHub and I just store everything publicly. You don't need a database if you hardcode everything. Joking aside, in the current state, I don't feel the need for a database. Given that it adds a lot of complexity, I'm fine with this static website rebuilding every time i make a change to an article. #githubasdatabase
-- **framework:** you know it, there's no reason for me to say it. Well i'll say it anyway...**SVELTEKIT!** I admit in the beginning i was thinking of Astro: I think it's a super-powerful framework, especially for static websites like this one. And i could've used Svelte there too. But I'm just too used to Sveltekit, and it's not like the static site generation story with it is bad. Will this be a mistake? Only time will tell. In the meantime I had a lot of fun building this and I'm totally fine with it.
-- **css:** ok time to stir the water a bit. For the css framework, I used Tailwind! Ok now please put down you pitchfork, dip your torch in the water, take a deep breath and listen to my reasons. I was quite against Tailwind in the beginning (yeah i know, it's what everybody says) but then I started to realize it's value. It allows you to move fast because you don't have to switch context but, much more importantly, it provides you with a coherent design system and it's also better for the user because you'll likely end up shipping less and more cacheable css. And given that I will probably be the only one working on this blog I don't feel bad at all for making this decision.
-- **markdown:** what I'm using in this very moment to speak to you through the web is markdown. I'm specifically using mdsvex, which is a preprocessor for svelte that allows me to write markdown sprinkled with svelte components (i hope i will be writing a lot of interactive blog post to make this at full use)
+- **hosting:** vercel. Yeah I know...BORING! But that's what I want my hosting to be. I don't want to do fancy stuff with custom VPS, and if you want to host your personal website on raw AWS, I'm calling the tech police because you are a criminal 🚨. Vercel handles everything for you: the SSL, the preview branches, it has a neat dashboard that gives you control over everything you need. I used to be a Netli-fan but since it's pretty similar to Vercel, I switched to the latter because it can also stream from lambdas. I'm not using that feature right now but you know, better be safe than sorry.
+- **database:** absolutely no db! "How?" do I hear you say? This is a static website baby. The code is hosted on GitHub and I just store everything publicly. You don't need a database if you hardcode everything. Joking aside, in the current state, I don't feel the need for a database. Given that it adds a lot of complexity, I'm fine with this static website rebuilding every time I make a change to an article. #githubasdatabase
+- **framework:** you know it, there's no reason for me to say it. Well I'll say it anyway...**SVELTEKIT!** I admit in the beginning I was thinking of Astro: I think it's a super-powerful framework, especially for static websites like this one. And I could've used Svelte there too. But I'm just too used to Sveltekit, and it's not like the static site generation story with it is bad. Will this be a mistake? Only time will tell. In the meantime I had a lot of fun building this and I'm totally fine with it.
+- **css:** ok time to stir the water a bit. For the css framework, I used Tailwind! Ok now please put down you pitchfork, dip your torch in the water, take a deep breath and listen to my reasons. I was quite against Tailwind in the beginning (yeah I know, it's what everybody says) but then I started to realize it's value. It allows you to move fast because you don't have to switch context but, much more importantly, it provides you with a coherent design system and it's also better for the user because you'll likely end up shipping less and more cacheable css. And given that I will probably be the only one working on this blog I don't feel bad at all for making this decision.
+- **markdown:** what I'm using in this very moment to speak to you through the web is markdown. I'm specifically using mdsvex, which is a preprocessor for svelte that allows me to write markdown sprinkled with svelte components (I hope I will be writing a lot of interactive blog post to make this at full use)
 - **syntax highlight:** this being a dev blog means a lot of code snippets, so the highlighter is something really important. I went for `shiki` to get beautiful customizable themes. Initially, I went with `shiki-twoslash` that added Typescript syntax highlight to the snippets but it was really too much of a hassle because you had to recreate the whole import chain for every snippet of code, or else the build would've failed.
 
 ## The details
 
-At the end of the day the implementation is pretty standard but i think there are some neaty tricks that I've used that can be useful if you too want to write your blog with SvelteKit.
+At the end of the day the implementation is pretty standard but I think there are some neaty tricks that I've used that can be useful if you too want to write your blog with SvelteKit.
 
 ### adapter-static
 
@@ -49,7 +49,7 @@ lib/
         └── index.svx
 ```
 
-as you can probably spot, the convention is that i will always have an `index.svx` inside a folder named as the slug. How do I display them then? `import.meta.glob` and `import` to the rescue.
+as you can probably spot, the convention is that I will always have an `index.svx` inside a folder named as the slug. How do I display them then? `import.meta.glob` and `import` to the rescue.
 
 I created an utility function that imports all the articles and their metadata using `import.meta.glob` from `vite` and I'm using that in a server endpoint:
 
@@ -84,7 +84,7 @@ export function get_articles() {
 }
 ```
 
-and what about the single article i hear you ask? Well dynamic import and sveltekit `+page.ts` is all you need
+and what about the single article I hear you ask? Well dynamic import and sveltekit `+page.ts` is all you need
 
 ```ts
 import { get_articles } from '$lib/articles/utils.js';
@@ -158,7 +158,7 @@ with every index.json having the following structure
 }
 ```
 
-another subtle trick is having the order initially be a multiple of 100.This allows me to sneak a new project in between old ones (this broke if i want to sneak 100 project in the middle but i have a life and i will never build 100 project that i'm proud of).
+another subtle trick is having the order initially be a multiple of 100.This allows me to sneak a new project in between old ones (this broke if I want to sneak 100 project in the middle but I have a life and I will never build 100 project that I'm proud of).
 
 The import is done directly in the `+page.svelte`
 
@@ -199,12 +199,12 @@ const projects = Object.entries(projects_data)
 	.sort((projectA, projectB) => (projectA.order ?? 0) - (projectB.order ?? 0));
 ```
 
-in the speaking page it's even simpler since i don't need a folder to contain the image so i just have literally a series of json files named with multiple of 100 and i import them in the `+page.svelte` file.
+in the speaking page it's even simpler since I don't need a folder to contain the image so I just have literally a series of json files named with multiple of 100 and I import them in the `+page.svelte` file.
 
 ### suggestions
 
-The final aspect I'd like to draw your attention to is the suggestions provided at the conclusion of this blog post (unless this will be the only blog post i will ever post). What you'll notice is a collection of three articles that closely align with the content of this one. You might wonder, how is this achieved? Well, <Magic>with the power of AI!</Magic> I will write a more thorough post in the future to show you the exact workflow that allows me to have suggestions based on similarity, but the gist of it is that i'm using embeddings from OpenAPI and a cosine similarity function that i've copied from Stack Overflow
+The final aspect I'd like to draw your attention to is the suggestions provided at the conclusion of this blog post (unless this will be the only blog post I will ever post). What you'll notice is a collection of three articles that closely align with the content of this one. You might wonder, how is this achieved? Well, <Magic>with the power of AI!</Magic> I will write a more thorough post in the future to show you the exact workflow that allows me to have suggestions based on similarity, but the gist of it is that I'm using embeddings from OpenAPI and a cosine similarity function that I've copied from Stack Overflow
 
 ## Conclusions
 
-I hope to see you around here, again, this was the free blog post i got for building this from scratch, but i hope you still got some insight. Expect a bit more nuanced post from me in a while and have a good day! 👋
+I hope to see you around here, again, this was the free blog post I got for building this from scratch, but I hope you still got some insight. Expect a bit more nuanced post from me in a while and have a good day! 👋

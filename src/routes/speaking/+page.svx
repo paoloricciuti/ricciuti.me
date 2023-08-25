@@ -12,16 +12,16 @@
 
 # speaking
 
-I know it may sound weird for someone but i love public speaking. I try to keep every talk entertaining while providing the best value possible.
+I know it may sound weird for someone but I love public speaking. I try to keep every talk entertaining while providing the best value possible.
 
 Being an avid open-sourcer sometimes my
-talk are about my projects but i try to make whoever listen to the talk, leave with a bit more knowledge about the same problem that inspire me to create that project.
+talk are about my projects but I try to make whoever listen to the talk, leave with a bit more knowledge about the same problem that inspire me to create that project.
 
 I'm also a regular co-host of [This Week in Svelte](https://youtube.com/playlist?list=PL8bMgX1kyZTiLCyvf8vF13sdnR4fhNl6v) a weekly (who would've guessed) appointment in the [svelte discord](https://discord.gg/svelte);
 
 Do you want me to talk at your conference/meetup/podcast/coffee with friends? [Reach to me](/contacts) without hesitation!
 
-Wanna see how i speak and teach? **Here's some examples**:
+Wanna see how I speak and teach? **Here's some examples**:
 
 {#each talks as talk (talk.link)}
 
