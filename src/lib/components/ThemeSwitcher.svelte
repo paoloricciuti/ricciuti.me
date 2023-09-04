@@ -22,6 +22,8 @@
 			const media = window.matchMedia('(prefers-color-scheme: dark)');
 			if (media.matches) {
 				theme = 'dark';
+			} else {
+				theme = 'light';
 			}
 			media.addEventListener('change', (media) => {
 				if (!window.localStorage.getItem('ricciuti_me_theme')) return;
