@@ -1,8 +1,11 @@
 <script>
 	import { YouTube } from 'sveltekit-embed';
-	const talks = Object.values(import.meta.glob("$lib/talks/*.json", {
+	const talks = Object.entries(import.meta.glob("$lib/talks/*.json", {
 		eager: true,
-	}));
+	})).map(([key, value])=>{
+		const matches = key.match(/\/src\/lib\/talks\/(?<num>\d+)\.json/);
+		return { order: +matches.groups.num, value };
+	}).sort((a, b) => a.order - b.order);
 </script>
 
 <svelte:head>
@@ -23,9 +26,9 @@ Do you want me to talk at your conference/meetup/podcast/coffee with friends? [R
 
 Wanna see how I speak and teach? **Here's some examples**:
 
-{#each talks as talk (talk.link)}
+{#each talks as talk (talk.value.link)}
 
-### {talk.title}
+### {talk.value.title}
 
-<YouTube youTubeId={talk.link} />
+<YouTube youTubeId={talk.value.link} />
 {/each}
