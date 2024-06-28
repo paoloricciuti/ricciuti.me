@@ -1,14 +1,23 @@
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
 import preview, { htmlFormatter, textFormatter } from 'remark-preview';
-import { getHighlighter } from 'shiki';
+import { createHighlighter } from 'shiki';
 
-const highlighter = await getHighlighter({ theme: 'css-variables' });
+const highlighter = await createHighlighter({
+	langs: ["typescript", "svelte", "css", "html", "js", "bash", "json"],
+	themes: ["github-dark", "github-light"]
+});
 
 const config = defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
 	highlight: {
 		highlighter(code, lang) {
-			const html = highlighter.codeToHtml(code, { lang });
+			const html = highlighter.codeToHtml(code, { 
+				lang,
+				themes: {
+					light: "github-light",
+					dark: "github-dark"
+				}
+			});
 			return `{@html \`${html
 				.replace('%ts%', 'ts')
 				.replaceAll('`', '\\`')
