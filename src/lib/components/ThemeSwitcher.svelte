@@ -113,11 +113,8 @@
 {/if}
 
 <style>
-	:global(.swapping_theme::view-transition-old(root)) {
-		animation: none;
-		mix-blend-mode: normal;
-	}
+	:global(.swapping_theme::view-transition-old(root)),
 	:global(.swapping_theme::view-transition-new(root)) {
-		mix-blend-mode: normal;
+		animation: none;
 	}
 </style>
