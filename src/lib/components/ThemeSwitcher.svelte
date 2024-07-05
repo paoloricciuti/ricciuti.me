@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { Moon, Sun } from 'lucide-svelte';
-	import { onMount } from 'svelte';
-	import { fade, crossfade } from 'svelte/transition';
+	import { crossfade, fade } from 'svelte/transition';
 
 	const [send, receive] = crossfade({
 		duration: 250,
 	});
 
-	let theme: 'light' | 'dark' | undefined;
+	let theme: 'light' | 'dark' | undefined = $state();
 
 	function swap() {
 		document.documentElement.classList.remove(theme ?? '');
@@ -16,7 +15,7 @@
 		document.documentElement.classList.add(theme);
 	}
 
-	onMount(() => {
+	$effect(() => {
 		const current_theme = window.localStorage.getItem('ricciuti_me_theme');
 		if (!current_theme) {
 			const media = window.matchMedia('(prefers-color-scheme: dark)');
@@ -40,7 +39,7 @@
 		in:fade={{
 			duration: 100,
 		}}
-		on:click={async (e) => {
+		onclick={async (e) => {
 			const prefers_reduced_motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 			if (!document.startViewTransition || prefers_reduced_motion.matches) {
 				swap();

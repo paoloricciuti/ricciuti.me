@@ -1,3 +1,5 @@
+<svelte:options preserveWhitespace />
+
 <script lang="ts">
 	import '../app.css';
 	import '../tokens.css';

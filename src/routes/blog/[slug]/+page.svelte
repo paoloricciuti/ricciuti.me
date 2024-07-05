@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { date_formatter } from '$lib/utils';
 
-	export let data;
-	$: published = new Date(data.article.metadata.published);
+	let { data } = $props();
+	const published = $derived(new Date(data.article.metadata.published));
 </script>
 
 <svelte:head>
