@@ -20,9 +20,6 @@ importers:
       sveltekit-embed:
         specifier: ^0.0.12
         version: 0.0.12
-      vite-plugin-dynamic-import:
-        specifier: ^1.5.0
-        version: 1.5.0
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -872,9 +869,6 @@ packages:
   entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
-
-  es-module-lexer@1.5.4:
-    resolution: {integrity: sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==}
 
   es6-promise@3.3.1:
     resolution: {integrity: sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg==}
@@ -2000,9 +1994,6 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite-plugin-dynamic-import@1.5.0:
-    resolution: {integrity: sha512-Qp85c+AVJmLa8MLni74U4BDiWpUeFNx7NJqbGZyR2XJOU7mgW0cb7nwlAMucFyM4arEd92Nfxp4j44xPi6Fu7g==}
-
   vite@5.3.2:
     resolution: {integrity: sha512-6lA7OBHBlXUxiJxbO5aAY2fsHHzDr1q7DvXYnyZycRs2Dz+dXBWuhpWHvmljTRTpQC2uvGmUFFkSHF2vGo90MA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -2816,8 +2807,6 @@ snapshots:
   emoji-regex@9.2.2: {}
 
   entities@4.5.0: {}
-
-  es-module-lexer@1.5.4: {}
 
   es6-promise@3.3.1: {}
 
@@ -4001,13 +3990,6 @@ snapshots:
       - sugarss
       - supports-color
       - terser
-
-  vite-plugin-dynamic-import@1.5.0:
-    dependencies:
-      acorn: 8.12.0
-      es-module-lexer: 1.5.4
-      fast-glob: 3.3.2
-      magic-string: 0.30.10
 
   vite@5.3.2(@types/node@20.14.9):
     dependencies:
