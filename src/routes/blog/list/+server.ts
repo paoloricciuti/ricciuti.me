@@ -4,6 +4,6 @@ import { json } from '@sveltejs/kit';
 export const prerender = true;
 
 export async function GET() {
-	const articles = get_articles();
+	const articles = await get_articles();
 	return json(articles);
 }

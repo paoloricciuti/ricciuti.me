@@ -1,15 +1,13 @@
 import { cosinesim } from '$lib/math';
 import { article_schema } from '$lib/schemas';
 
-export function get_articles() {
-	const articles_import = import.meta.glob('$lib/articles/**/index.svx', {
-		eager: true,
-	});
+export async function get_articles() {
+	const articles_import = import.meta.glob('$lib/articles/**/index.svx');
 	const articles = [];
 	for (const article_location in articles_import) {
 		const { slug } =
 			article_location.match(/\/src\/lib\/articles\/(?<slug>.*)\/index.svx/)?.groups ?? {};
-		const { metadata } = article_schema.parse(articles_import[article_location]);
+		const { metadata } = article_schema.parse(await articles_import[article_location]());
 		articles.push({
 			slug,
 			...metadata,
@@ -23,12 +21,11 @@ export function get_articles() {
 	return articles;
 }
 
-export function calculate_similarity(slug: string) {
-	const embeddings_import = import.meta.glob('$lib/articles/**/embedding.json', {
-		eager: true,
-	});
+export async function calculate_similarity(slug: string) {
+	const embeddings_import = import.meta.glob('$lib/articles/**/embedding.json');
 	const embedding_map = new Map<string, number[]>();
-	for (const [path, embedding] of Object.entries(embeddings_import)) {
+	for (const [path, embedding_promise] of Object.entries(embeddings_import)) {
+		const embedding = await embedding_promise();
 		if (
 			embedding &&
 			typeof embedding === 'object' &&
