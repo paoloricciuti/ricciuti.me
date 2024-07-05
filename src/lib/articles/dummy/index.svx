@@ -1,6 +1,0 @@
----
-title: dummy one is dummy
-published: 2024-07-05
----
-
-dummy blogpost is dummy
