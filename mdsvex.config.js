@@ -3,20 +3,20 @@ import preview, { htmlFormatter, textFormatter } from 'remark-preview';
 import { createHighlighter } from 'shiki';
 
 const highlighter = await createHighlighter({
-	langs: ["typescript", "svelte", "css", "html", "js", "bash", "json"],
-	themes: ["github-dark", "github-light"]
+	langs: ['typescript', 'svelte', 'css', 'html', 'js', 'bash', 'json'],
+	themes: ['github-dark', 'github-light'],
 });
 
 const config = defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
 	highlight: {
 		highlighter(code, lang) {
-			const html = highlighter.codeToHtml(code, { 
+			const html = highlighter.codeToHtml(code, {
 				lang,
 				themes: {
-					light: "github-light",
-					dark: "github-dark"
-				}
+					light: 'github-light',
+					dark: 'github-dark',
+				},
 			});
 			return `{@html \`${html
 				.replace('%ts%', 'ts')

@@ -19,7 +19,6 @@
 	const projects = Object.entries(projects_data)
 		.map(([folder, module]) => {
 			// remove unneeded default
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			const { default: _, ...data } = module;
 			const matches = folder.match(/^(?<folder>.*)index.json$/);
 			let img = '';
