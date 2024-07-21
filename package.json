@@ -50,7 +50,7 @@
 		"lucide-svelte": "^0.399.0",
 		"remark-preview": "^1.0.2",
 		"shiki": "^1.9.1",
-		"svelte-eslint-parser": "^0.39.2",
+		"svelte-eslint-parser": "^0.40.0",
 		"sveltekit-embed": "^0.0.12",
 		"zod": "^3.23.8"
 	}
