@@ -21,6 +21,6 @@ I have a computer science degree and I started developing when I was 17 years (w
 
 Nowadays I work at [Mainmatter](https://mainmatter.com) as Fullstack Senior Software Engineer.
 
-I love Svelte 🧡 and I'm fortunate enough to work with it. I'm also one of the Svelte Ambassadors.
+I love Svelte 🧡 and I'm fortunate enough to work with it. I'm also one of the Svelte Ambassadors. As of September of 2024 i've also joined the svelte core team as a maintainer so you'll likely see me around in the svelte github repo.
 
 </main>
