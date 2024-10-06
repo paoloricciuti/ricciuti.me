@@ -47,7 +47,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"lucide-svelte": "^0.446.0",
+		"lucide-svelte": "^0.447.0",
 		"remark-preview": "^1.0.2",
 		"shiki": "^1.9.1",
 		"svelte-eslint-parser": "^0.41.0",
