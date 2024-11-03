@@ -51,7 +51,7 @@
 		"remark-preview": "^1.0.2",
 		"shiki": "^1.9.1",
 		"svelte-eslint-parser": "^0.41.0",
-		"sveltekit-embed": "^0.0.16",
+		"sveltekit-embed": "^0.0.18",
 		"zod": "^3.23.8"
 	}
 }
