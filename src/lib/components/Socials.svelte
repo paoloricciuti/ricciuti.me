@@ -1,5 +1,5 @@
 <script lang="ts">
-	import sprite from '../assets/socials-sprite.svg';
+	import sprite from '../assets/socials-sprite.svg?url';
 
 	const { social }: { social: string } = $props();
 </script>
