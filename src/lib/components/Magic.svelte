@@ -1,6 +1,12 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+
+	let { children }: { children: Snippet } = $props();
+</script>
+
 <!-- Thanks to josh comeau for this beautiful post (https://www.joshwcomeau.com/react/animated-sparkles-in-react/) and the idea of this component -->
 <span class="relative"
-	><slot />
+	>{@render children?.()}
 	{#each { length: 5 } as _, num}
 		{@const step = 100 / 5}
 		{@const x = Math.random() * step + num * step}

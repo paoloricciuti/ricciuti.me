@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="37.916 62.43 295 85" {...$$restProps}
+<script lang="ts">
+	let { ...rest } = $props();
+</script>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="37.916 62.43 295 85" {...rest}
 	><path
 		d="M55.916 62.43h259a18 18 0 0 1 18 18v49a18 18 0 0 1-18 18h-277v-67a18 18 0 0 1 18-18Z"
 		style="stroke:currentColor;fill:var(--fill, #fff);paint-order:fill"
