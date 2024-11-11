@@ -15,7 +15,7 @@
 		></span
 	>
 	<hr class="my-2" />
-	<svelte:component this={data.article.component} />
+	<data.article.component />
 </article>
 
 {#if data.suggestions.length > 0}
