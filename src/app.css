@@ -1,15 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-2xs: 350px;
+
+  --color-brand-50: #fff5ec;
+  --color-brand-100: #ffe9d3;
+  --color-brand-200: #ffcea5;
+  --color-brand-300: #ffac6d;
+  --color-brand-400: #ff7d32;
+  --color-brand-500: #ff590a;
+  --color-brand-600: #ff3e00;
+  --color-brand-700: #cc2902;
+  --color-brand-800: #a1210b;
+  --color-brand-900: #821e0c;
+  --color-brand-950: #3d1612;
+
+  --background-color-current: var(--bg);
+
+  --grid-template-columns-main: 1fr auto;
+
+  --grid-template-rows-main: auto auto 1fr;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 :root {
 	scrollbar-gutter: stable;
 }
 
 body {
-	--bg: theme(colors.zinc.100);
-	--color: theme(colors.zinc.800);
-	--brand: theme(colors.brand.100);
+	--bg: var(--color-zinc-100);
+	--color: var(--color-zinc-800);
+	--brand: var(--color-brand-100);
 	background-color: var(--bg);
 	background-image: linear-gradient(var(--bg) 20%, var(--brand));
 	background-attachment: fixed;
@@ -17,7 +59,7 @@ body {
 }
 
 .dark body {
-	--bg: theme(colors.zinc.800);
-	--color: theme(colors.zinc.100);
-	--brand: theme(colors.brand.950);
+	--bg: var(--color-zinc-800);
+	--color: var(--color-zinc-100);
+	--brand: var(--color-brand-950);
 }

@@ -20,14 +20,13 @@
 	};
 
 	const socials = {
-		twitter: 'https://twitter.com/PaoloRicciuti',
 		github: 'https://github.com/paoloricciuti',
 		bsky: 'https://bsky.app/profile/ricciuti.me',
 	};
 </script>
 
 <header
-	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 bg-current p-4 font-mono"
+	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 p-4 font-mono"
 >
 	<ThemeSwitcher />
 	<h1 class="text-4xl">ricciuti.me</h1>
@@ -55,13 +54,13 @@
 		<Logo width="100%" />
 	</picture>
 
-	<section class="md:prose-md prose min-w-full max-w-full p-4 font-mono dark:prose-invert">
+	<section class="md:prose-md prose dark:prose-invert max-w-full min-w-full p-4 font-mono">
 		{@render children?.()}
 	</section>
 </main>
 
 <style lang="postcss">
-	@media (min-width: theme(screens.sm)) {
+	@media (min-width: 40rem) {
 		:not(.socials) > li:not(:last-child)::after {
 			content: '|';
 		}

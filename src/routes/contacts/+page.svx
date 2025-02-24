@@ -9,7 +9,7 @@ Contacting me it's fairly easy since you can find me all over the web.
 
 Here's your options
 
-- write me a dm on [Bluesky](https://bsky.app/profile/paolo.ricciuti.me) or [~~X~~ Twitter ](https://twitter.com/PaoloRicciuti) (while you are at it follow me if you like svelte content)
+- write me a dm on [Bluesky](https://bsky.app/profile/paolo.ricciuti.me) (while you are at it follow me if you like svelte content)
 - write me on [Discord](https://discordapp.com/users/282306658825273344)
 - write me an email at [ricciutipaolo@gmail.com](mailto:ricciutipaolo@gmail.com)
 - write me on [Github](https://github.com/paoloricciuti)

@@ -56,9 +56,9 @@
 
 <style lang="postcss">
 	svg {
-		--fill: theme(colors.zinc.100);
+		--fill: var(--color-zinc-100);
 	}
 	:global(.dark) svg {
-		--fill: theme(colors.zinc.800);
+		--fill: var(--color-zinc-800);
 	}
 </style>
