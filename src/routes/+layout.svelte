@@ -60,7 +60,8 @@
 </main>
 
 <style lang="postcss">
-	@media (min-width: 40rem) {
+	@reference "../app.css";
+	@media (min-width: theme(--breakpoint-sm)) {
 		:not(.socials) > li:not(:last-child)::after {
 			content: '|';
 		}
