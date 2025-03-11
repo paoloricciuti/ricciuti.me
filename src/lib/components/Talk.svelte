@@ -99,9 +99,10 @@
 	}
 	details::details-content {
 		block-size: 0;
+		--timing: 0.5s;
 		transition:
-			block-size 1s,
-			content-visibility 1s;
+			block-size var(--timing),
+			content-visibility var(--timing);
 		transition-behavior: allow-discrete;
 	}
 	details:open::details-content {
