@@ -28,7 +28,7 @@
 	<h3>{title}</h3>
 	<small>{event}{air_date}</small>
 	<details>
-		<summary>show me the abstract</summary>
+		<summary>the abstract</summary>
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<p>{@html description}</p>
 	</details>
@@ -113,6 +113,9 @@
 		cursor: pointer;
 	}
 	summary::marker {
-		content: '';
+		content: 'show ';
+	}
+	details:open summary::marker {
+		content: 'hide ';
 	}
 </style>
