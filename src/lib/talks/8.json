@@ -1,0 +1,9 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "Enhance!",
+	"event": "SvelteSummit Fall 2023",
+	"watch": "https://youtube.com/watch?v=RT0aemVpvVE",
+	"date": "2023-11-20",
+	"slides": "https://enhance-svelte.vercel.app/",
+	"description": "One of the key features of SvelteKit is how much is focused on progressive enhancement. It's easy to build a website that works without Javascript and get's 100 times better with it.<br /><br />That said there are limitations, mainly based on the limitation of \"The platform\". What if you want to use a modal? Or a range slider? Those things require the usage of Javascript and thus if you want to be really keen on progressive enhancement you might find yourself avoiding those patterns in the name of the user-without-javascript experience.<br /><br />But there are ways around this and this talk aim to help you navigate around the world of progressive enhancement without sacrificing the experience of the users that do have Javascript."
+}

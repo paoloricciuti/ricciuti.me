@@ -1,11 +1,10 @@
 <script>
-	import { YouTube } from 'sveltekit-embed';
+	import Talk from '$lib/components/Talk.svelte';
 	const talks = Object.entries(import.meta.glob("$lib/talks/*.json", {
 		eager: true,
-	})).map(([key, value])=>{
-		const matches = key.match(/\/src\/lib\/talks\/(?<num>\d+)\.json/);
-		return { order: +matches.groups.num, value };
-	}).sort((a, b) => a.order - b.order);
+	})).map(([_, value])=>{
+		return { ...value, date: new Date(value.date) };
+	}).sort((a, b) =>  b.date.getTime() - a.date.getTime());
 </script>
 
 <svelte:head>
@@ -20,15 +19,14 @@ I know it may sound weird for someone but I love public speaking. I try to keep 
 Being an avid open-sourcer sometimes my
 talk are about my projects but I try to make whoever listen to the talk, leave with a bit more knowledge about the same problem that inspire me to create that project.
 
-I'm also a regular co-host of [This Week in Svelte](https://youtube.com/playlist?list=PL8bMgX1kyZTiLCyvf8vF13sdnR4fhNl6v) a weekly (who would've guessed) appointment in the [svelte discord](https://discord.gg/svelte);
+I'm also a regular host of [This Week in Svelte](https://youtube.com/playlist?list=PL8bMgX1kyZTiLCyvf8vF13sdnR4fhNl6v) a weekly (who would've guessed) appointment on the Svelte Society youtube channel.
 
 Do you want me to talk at your conference/meetup/podcast/coffee with friends? [Reach to me](/contacts) without hesitation!
 
 Wanna see how I speak and teach? **Here's some examples**:
 
-{#each talks as talk (talk.value.link)}
+{#each talks as talk (talk.title)}
 
-### {talk.value.title}
+<Talk {...talk} />
 
-<YouTube youTubeId={talk.value.link} />
 {/each}

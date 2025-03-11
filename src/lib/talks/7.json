@@ -1,0 +1,9 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "I like it move it move it",
+	"event": "Svelte London Meetup",
+	"watch": "https://youtube.com/watch?v=9WQYwfk-JkE",
+	"date": "2023-10-25",
+	"slides": "https://i-like-it-move-it-move-it.vercel.app/",
+	"description": "Animations and micro-interactions are an essential part of modern web development, especially if you want to make your app feel polished. With the addition of view transitions it's never been easier to do it...but how do they work? And how can you use it in Sveltekit effectively?"
+}

@@ -13,10 +13,10 @@
 
 	const pages = {
 		home: '/',
+		blog: '/blog',
 		about: '/about',
 		speaking: '/speaking',
 		contacts: '/contacts',
-		projects: '/projects',
 	};
 
 	const socials = {
@@ -26,7 +26,7 @@
 </script>
 
 <header
-	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 p-4 font-mono"
+	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 bg-[var(--bg)] p-4 font-mono"
 >
 	<ThemeSwitcher />
 	<h1 class="text-4xl">ricciuti.me</h1>

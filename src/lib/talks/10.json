@@ -1,0 +1,8 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "Surprise! Svelte Secretly Sending Signals",
+	"event": "Svelte London Meetup",
+	"watch": "https://www.youtube.com/watch?v=s79E0Q9f2YM",
+	"date": "2025-02-26",
+	"description": "Svelte 5 brought a brand new paradigm on the table of svelte users: Runes.<br /><br />Under the hood Runes uses a popular pattern for fine grained reactivity called Signals. While signals are just an implementation detail for svelte, understanding how they work and why they work and what gotchas they bring is good to be more proficient developing with Svelte.<br/><br/>In this talk we will implement a basic version of a reactivity system with signals and go over the main gotchas."
+}

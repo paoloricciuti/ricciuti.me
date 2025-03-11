@@ -1,0 +1,9 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "Sharable State",
+	"event": "Svelte London Meetup",
+	"watch": "https://youtube.com/watch?v=DXQl1G54DJY",
+	"date": "2022-11-24",
+	"slides": "https://sharable-state-slides.netlify.app/1",
+	"description": "Presentation of <code>sveltekit-search-params</code> a library to quickly read and write to the query params"
+}

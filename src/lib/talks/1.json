@@ -1,0 +1,8 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "Presenting SvelteLab",
+	"event": "This Week in Svelte",
+	"watch": "https://youtube.com/watch?v=H2kOO5mvUQs",
+	"date": "2023-04-15",
+	"description": "Presentation of Sveltelab, the supercharged REPL for sveltekit, winner of the Svelte Hackaton 2023"
+}
