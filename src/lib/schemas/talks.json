@@ -2,28 +2,37 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"title": "Talk",
 	"type": "object",
-	"required": ["title", "description", "event"],
+	"required": ["title", "description", "events"],
 	"properties": {
 		"title": {
 			"type": "string"
 		},
-		"event": {
-			"type": "string"
-		},
-		"watch": {
-			"type": "string",
-			"format": "uri"
-		},
 		"description": {
 			"type": "string"
 		},
-		"slides": {
-			"type": "string",
-			"format": "uri"
-		},
-		"date": {
-			"type": "string",
-			"format": "date"
+		"events": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": ["event", "date"],
+				"properties": {
+					"event": {
+						"type": "string"
+					},
+					"watch": {
+						"type": "string",
+						"format": "uri"
+					},
+					"slides": {
+						"type": "string",
+						"format": "uri"
+					},
+					"date": {
+						"type": "string",
+						"format": "date"
+					}
+				}
+			}
 		}
 	}
 }

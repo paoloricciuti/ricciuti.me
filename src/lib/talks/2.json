@@ -1,8 +1,0 @@
-{
-	"$schema": "../schemas/talks.json",
-	"title": "Hacking Sveltelab",
-	"event": "Svelte London Meetup",
-	"watch": "https://youtube.com/watch?v=VkVyP1TgH64",
-	"date": "2023-05-16",
-	"description": "Presentation of Sveltelab, the supercharged REPL for sveltekit, winner of the Svelte Hackaton 2023"
-}

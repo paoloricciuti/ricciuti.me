@@ -1,0 +1,27 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "Hacking SvelteLab",
+	"description": "Presentation of Sveltelab, the supercharged REPL for sveltekit, winner of the Svelte Hackaton 2023",
+	"events": [
+		{
+			"event": "This Week in Svelte",
+			"watch": "https://youtube.com/watch?v=H2kOO5mvUQs",
+			"date": "2023-04-15"
+		},
+		{
+			"event": "Svelte London Meetup",
+			"watch": "https://youtube.com/watch?v=VkVyP1TgH64",
+			"date": "2023-05-16"
+		},
+		{
+			"event": "CodingCat",
+			"watch": "https://youtube.com/watch?v=S1iakhstHlc",
+			"date": "2023-06-21"
+		},
+		{
+			"event": "Svelte Summit Spring 2023",
+			"watch": "https://youtube.com/watch?v=UKZDcDNAHXY",
+			"date": "2023-05-25"
+		}
+	]
+}

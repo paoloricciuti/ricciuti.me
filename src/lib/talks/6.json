@@ -1,9 +1,0 @@
-{
-	"$schema": "../schemas/talks.json",
-	"title": "Fullstack testing",
-	"event": "SvelteSummit Spring 2024",
-	"watch": "https://youtube.com/watch?v=c4JlSKfj150",
-	"date": "2024-05-20",
-	"slides": "https://fullstack-testing.ricciuti.app/",
-	"description": "Testing is a very important part of your application but in the modern world frameworks blend the line between frontend and backend. In this talk we will explore how to test your fullstack application using SvelteKit going over what the testing pyramid and various techniques to unlock your full(stack) testing potential."
-}

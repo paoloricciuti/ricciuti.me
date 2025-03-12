@@ -1,0 +1,18 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "Herd your async tasks!",
+	"description": "Asynchronous code is a PITA but it doesn't have to be...follow along to learn about how a sheepdog can help you herd and juggle all your async tasks!",
+	"events": [
+		{
+			"event": "Svelte Vienna Meetup",
+			"slides": "https://sheepdog.ricciuti.app",
+			"date": "2025-02-03"
+		},
+		{
+			"event": "Svelte London Meetup",
+			"watch": "https://youtube.com/watch?v=mxM208nCvHc",
+			"slides": "https://sheepdog.ricciuti.app",
+			"date": "2024-10-30"
+		}
+	]
+}
