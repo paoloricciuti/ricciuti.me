@@ -14,7 +14,7 @@
 		}>;
 	} = $props();
 
-	const intl = new Intl.DateTimeFormat(undefined, {
+	const intl = new Intl.DateTimeFormat(navigator.languages, {
 		localeMatcher: 'best fit',
 	});
 </script>
