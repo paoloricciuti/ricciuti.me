@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+
 	let {
 		title,
 		description,
@@ -14,7 +16,7 @@
 		}>;
 	} = $props();
 
-	const intl = new Intl.DateTimeFormat(navigator.languages, {
+	const intl = new Intl.DateTimeFormat(browser ? navigator.languages : undefined, {
 		localeMatcher: 'best fit',
 	});
 </script>
