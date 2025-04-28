@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Moon, Sun } from 'lucide-svelte';
+	import Moon from 'lucide-svelte/icons/moon';
+	import Sun from 'lucide-svelte/icons/sun';
 	import { crossfade, fade } from 'svelte/transition';
 
 	const [send, receive] = crossfade({
@@ -81,7 +82,7 @@
 			await transition.finished;
 			document.documentElement.classList.remove('swapping_theme');
 		}}
-		class="relative z-50 h-8 w-8 justify-self-end 2xs:fixed 2xs:right-4 2xs:top-4"
+		class="2xs:fixed 2xs:right-4 2xs:top-4 relative z-50 h-8 w-8 justify-self-end"
 	>
 		{#if theme === 'light'}
 			<span
