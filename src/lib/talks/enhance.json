@@ -8,6 +8,11 @@
 			"watch": "https://youtube.com/watch?v=RT0aemVpvVE",
 			"date": "2023-11-20",
 			"slides": "https://enhance-svelte.vercel.app/"
+		},
+		{
+			"event": "techcamp Hamburg",
+			"date": "2026-07-03",
+			"slides": "https://enhance-svelte.vercel.app/"
 		}
 	]
 }
