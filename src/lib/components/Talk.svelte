@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import Copy from 'lucide-svelte/icons/copy';
+	import Check from 'lucide-svelte/icons/check';
+	import X from 'lucide-svelte/icons/x';
+	import type { Component } from 'svelte';
 
 	let {
 		title,
@@ -16,12 +20,57 @@
 		}>;
 	} = $props();
 
+	let copy_state: 'copied' | 'error' | undefined = $state(undefined);
+
+	const icon_map = {
+		copied: Check,
+		error: X,
+		default: Check,
+	};
+
+	let ResultIcon = $derived.by(() => {
+		let new_icon = icon_map[copy_state ?? 'default'];
+		if (copy_state) {
+			icon_map.default = new_icon;
+		}
+		return new_icon;
+	});
+
+	let timeout: ReturnType<typeof setTimeout>;
+
 	const intl = new Intl.DateTimeFormat(browser ? navigator.languages : undefined, {
 		localeMatcher: 'best fit',
 	});
 </script>
 
 <article>
+	<button
+		class={copy_state}
+		onclick={async () => {
+			clearTimeout(timeout);
+			try {
+				await navigator.clipboard.writeText(
+					`# ${title}\n\n${description.replace(/<br\s?\/?\s?>/g, '\n')}`,
+				);
+				copy_state = 'copied';
+			} catch {
+				copy_state = 'error';
+			}
+			timeout = setTimeout(() => {
+				copy_state = undefined;
+			}, 2000);
+		}}
+		aria-label="copy title and abstract"
+	>
+		<div class="copy-btn">
+			<span>
+				<Copy />
+			</span>
+			<span class="result">
+				<ResultIcon />
+			</span>
+		</div>
+	</button>
 	<h3>{title}</h3>
 	<div class="events">
 		{#each events as { event, date, slides, watch }}
@@ -77,10 +126,12 @@
 		display: grid;
 	}
 	article {
+		--padding: 0.5rem;
+		position: relative;
 		display: grid;
 		margin-bottom: 1rem;
 		border-left: #ff3e00 0.5rem solid;
-		padding: 0.5rem;
+		padding: var(--padding);
 		background-color: rgb(127 127 127 / 0.2);
 		border-radius: 0.5rem;
 
@@ -116,6 +167,39 @@
 	}
 	details:open summary::marker {
 		content: 'hide ';
+	}
+
+	button {
+		position: absolute;
+		cursor: pointer;
+		right: var(--padding);
+		top: var(--padding);
+
+		.copy-btn {
+			--timing: 0.25s;
+			transition:
+				transform var(--timing),
+				color var(--timing);
+			display: grid;
+			transform-style: preserve-3d;
+			span {
+				backface-visibility: hidden;
+				grid-column: 1/-1;
+				grid-row: 1/-1;
+			}
+
+			.result {
+				transform: rotateY(180deg);
+			}
+		}
+		&.copied .copy-btn {
+			color: lightgreen;
+			transform: rotateY(180deg);
+		}
+		&.error .copy-btn {
+			color: tomato;
+			transform: rotateY(180deg);
+		}
 	}
 
 	@keyframes highlight {
