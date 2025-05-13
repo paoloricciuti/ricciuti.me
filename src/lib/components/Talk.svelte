@@ -3,7 +3,6 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import Check from 'lucide-svelte/icons/check';
 	import X from 'lucide-svelte/icons/x';
-	import type { Component } from 'svelte';
 
 	let {
 		title,
