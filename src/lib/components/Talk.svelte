@@ -8,8 +8,10 @@
 		title,
 		description,
 		events,
+		slug,
 	}: {
 		title: string;
+		slug: string;
 		description: string;
 		events: Array<{
 			date: Date;
@@ -70,7 +72,7 @@
 			</span>
 		</div>
 	</button>
-	<h3>{title}</h3>
+	<h3 id={slug}><a class="title" href="#{slug}">{title}</a></h3>
 	<div class="events">
 		{#each events as { event, date, slides, watch }}
 			{@const air_date = isNaN(date.getTime()) ? '' : ` - ${intl.format(date)}`}
@@ -109,7 +111,13 @@
 <style>
 	:global(:root) {
 		interpolate-size: allow-keywords;
+		scroll-padding: 30%;
 	}
+	.title {
+		text-decoration: none;
+		color: inherit;
+	}
+
 	svg {
 		width: 24px;
 	}
@@ -137,7 +145,19 @@
 		h3 {
 			margin-top: 0rem;
 		}
+		&:has(:target)::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-image: linear-gradient(45deg, transparent 10%, white 20%, transparent 35%);
+			background-size: 300%;
+			background-position: 300%;
+			opacity: 0.3;
+			background-repeat: no-repeat;
+			animation: shine 3s infinite;
+		}
 	}
+
 	details p {
 		margin: 0;
 		padding-top: 0.5rem;
@@ -207,6 +227,12 @@
 		}
 		to {
 			color: #ff3e00;
+		}
+	}
+
+	@keyframes shine {
+		to {
+			background-position: -300%;
 		}
 	}
 </style>

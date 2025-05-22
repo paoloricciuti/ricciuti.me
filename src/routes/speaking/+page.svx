@@ -1,11 +1,12 @@
 <script>
 	import Talk from '$lib/components/Talk.svelte';
 
-	const talks = Object.values(import.meta.glob("$lib/talks/*.json", {
+	const talks = Object.entries(import.meta.glob("$lib/talks/*.json", {
 		eager: true,
-	})).map((value)=>{
+	})).map(([filename, value])=>{
+		const { groups: { slug }} = filename.match(/\/src\/lib\/talks\/(?<slug>.+)\.json/);
 		const events = value.events.map(event => ({...event, date: new Date(event.date)})).sort((a, b)=> b.date.getTime() - a.date.getTime());
-		return { ...value, events, date: events[0].date };
+		return { ...value, events, date: events[0].date, slug };
 	}).sort((a, b) =>  b.date.getTime() - a.date.getTime());
 </script>
 
