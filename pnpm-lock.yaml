@@ -21,8 +21,8 @@ importers:
         specifier: ^1.0.0
         version: 1.2.0(svelte@5.33.10)
       sveltekit-embed:
-        specifier: ^0.0.20
-        version: 0.0.20(svelte@5.33.10)
+        specifier: ^0.0.22
+        version: 0.0.22(svelte@5.33.10)
       zod:
         specifier: ^3.23.8
         version: 3.25.46
@@ -1715,8 +1715,9 @@ packages:
     resolution: {integrity: sha512-/yArPQIBoQS2p86LKnvJywOXkVHeEXnFgrDPSxkEfIAEkykopYuy2bF6UUqHG4IbZlJD6OurLxJT8Kn7kTk9WA==}
     engines: {node: '>=18'}
 
-  sveltekit-embed@0.0.20:
-    resolution: {integrity: sha512-b/QqAyI9AJxmsOIXMGgCaKFk5CtMJrR56WyTCxnLLC7FwVEbHkZoHf2IgqmXMJflYvmYKVhmF4x/xP/6+RESGQ==}
+  sveltekit-embed@0.0.22:
+    resolution: {integrity: sha512-+zNJF5dMd+Tolnmcc5ZHZIr90v5bj/SLMl2d410WZSuXC5RubWy45U5MtHahBFIXbxtnN/RBdxNj2kKE/jkCug==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0
 
@@ -3561,7 +3562,7 @@ snapshots:
       magic-string: 0.30.17
       zimmerframe: 1.1.2
 
-  sveltekit-embed@0.0.20(svelte@5.33.10):
+  sveltekit-embed@0.0.22(svelte@5.33.10):
     dependencies:
       svelte: 5.33.10
 
