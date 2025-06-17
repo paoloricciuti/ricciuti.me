@@ -42,6 +42,7 @@
 	<meta property="og:description" content="Tech blog and personal website of a mad scientist" />
 	<meta property="og:image" content="https://ricciuti.me/og{get_og()}" />
 	<meta property="og:type" content="website" />
+	<meta content="summary_large_image" name="twitter:card" />
 	<meta property="og:url" content="https://ricciuti.me/" />
 </svelte:head>
 
