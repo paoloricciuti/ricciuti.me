@@ -17,7 +17,7 @@ const articles = await get_articles();
 
 articles.push({
 	slug: 'home',
-	title: '',
+	title: 'my internet home',
 	preview: '',
 	preview_html: '',
 	published: '',
@@ -25,7 +25,7 @@ articles.push({
 
 articles.push({
 	slug: 'about',
-	title: "All there's to know about me",
+	title: "all there's to know about me",
 	preview: '',
 	preview_html: '',
 	published: '',
@@ -33,7 +33,7 @@ articles.push({
 
 articles.push({
 	slug: 'contacts',
-	title: 'How to contact me',
+	title: 'how to contact me',
 	preview: '',
 	preview_html: '',
 	published: '',
@@ -41,7 +41,7 @@ articles.push({
 
 articles.push({
 	slug: 'speaking',
-	title: 'Checkout how I public speak',
+	title: 'checkout how I public speak',
 	preview: '',
 	preview_html: '',
 	published: '',
