@@ -16,7 +16,7 @@ export async function get_articles() {
 	articles.sort((article_a, article_b) => {
 		const article_a_data = new Date(article_a.published);
 		const article_b_data = new Date(article_b.published);
-		return article_a_data.getTime() - article_b_data.getTime();
+		return article_b_data.getTime() - article_a_data.getTime();
 	});
 	return articles;
 }

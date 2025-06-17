@@ -1,0 +1,437 @@
+---
+title: $effect is fine but proxies are better
+published: 2025-06-17
+---
+
+<script>
+	import Magic from "$lib/components/Magic.svelte";
+</script>
+
+So, yesterday I was reading [a blog post by Puru](https://www.puruvj.dev/blog/svelte-5-runic-persist-theming) where he goes over how he built a `Persisted` utility for his project using Svelte 5 runes.
+
+To be fair, this is kind of the perfect use case for runes: where they really shine is with the ability to compose small bits of logic while providing an access point for the reactivity in Svelte.
+
+His blog post also goes over how he used this utility to create a theme switcher, so definitely go on and read his article, but what I wanted to focus on is the actual implementation of the `Persisted` utility. Let's take a quick glance at it:
+
+```ts
+import { browser } from '$helpers/utils.ts';
+import { on } from 'svelte/events';
+import { createSubscriber } from 'svelte/reactivity';
+import { parse, type ZodMiniType } from 'zod/v4-mini';
+import { auto_destroy_effect_root } from './auto-destroy-effect-root.svelte.ts';
+
+export type Serde = {
+	stringify: (value: any) => string;
+	parse: (value: string) => any;
+};
+
+const default_serde: Serde = {
+	stringify: (value) => JSON.stringify(value),
+	parse: (value) => JSON.parse(value),
+};
+
+type ExtractZodType<T> = T extends ZodMiniType<infer U> ? U : never;
+
+function get_value_from_storage(key: string, shape: ZodMiniType<any>, serde = default_serde) {
+	const value = localStorage.getItem(key);
+
+	if (!value) return { found: false, value: null };
+
+	try {
+		return {
+			found: true,
+			value: parse(shape, serde.parse(value)),
+		};
+	} catch (e) {
+		localStorage.removeItem(key);
+
+		return {
+			found: false,
+			value: null,
+		};
+	}
+}
+
+export class Persisted<T extends ZodMiniType> {
+	#current = $state<ExtractZodType<T>>(undefined as ExtractZodType<T>);
+	#subscribe: () => void;
+	#key: string;
+
+	constructor(key: string, initial: ExtractZodType<T>, shape: T, serde = default_serde) {
+		this.#current = initial;
+		this.#key = key;
+
+		if (browser) {
+			const val = get_value_from_storage(key, shape, serde);
+			if (val.found) {
+				this.#current = val.value;
+			}
+		}
+
+		// Create subscriber that only triggers for this specific key
+		this.#subscribe = createSubscriber((update) => {
+			return on(window, 'storage', (e: StorageEvent) => {
+				if (e.key === this.#key) {
+					const val = get_value_from_storage(this.#key, shape, serde);
+					if (val.found) {
+						this.#current = val.value;
+						update();
+					}
+				}
+			});
+		});
+
+		auto_destroy_effect_root(() => {
+			let is_first_run = true;
+
+			$effect(() => {
+				this.#subscribe();
+
+				const current = $state.snapshot(this.#current);
+				if (!is_first_run) {
+					localStorage.setItem(key, serde.stringify(current));
+				}
+
+				is_first_run = false;
+			});
+		});
+	}
+
+	get current() {
+		return this.#current;
+	}
+
+	set current(value: ExtractZodType<T>) {
+		this.#current = value;
+	}
+}
+```
+
+There's a bit of TypeScript shenanigans going on, but what is IMO the most interesting part here is the constructor:
+
+```ts
+this.#current = initial;
+this.#key = key;
+
+if (browser) {
+	const val = get_value_from_storage(key, shape, serde);
+	if (val.found) {
+		this.#current = val.value;
+	}
+}
+
+// Create subscriber that only triggers for this specific key
+this.#subscribe = createSubscriber((update) => {
+	return on(window, 'storage', (e: StorageEvent) => {
+		if (e.key === this.#key) {
+			const val = get_value_from_storage(this.#key, shape, serde);
+			if (val.found) {
+				this.#current = val.value;
+				update();
+			}
+		}
+	});
+});
+
+auto_destroy_effect_root(() => {
+	let is_first_run = true;
+
+	$effect(() => {
+		this.#subscribe();
+
+		const current = $state.snapshot(this.#current);
+		if (!is_first_run) {
+			localStorage.setItem(key, serde.stringify(current));
+		}
+
+		is_first_run = false;
+	});
+});
+```
+
+Here Puru is creating a subscriber to listen on the `storage` event (this allows the utility to also listen for changes to the storage that happen in different tabs) and then he's creating an `auto_destroy_effect_root` (which is a small utility he wrote to create an `$effect.root` and also clean it up `onDestroy` if you are inside a Svelte component) and within this new root effect he's creating an `$effect` that `$state.snapshot`s the current value and sets the item in `localStorage`.
+
+Now, to be completely clear, this is a perfectly valid use case for `$effect`: it's not setting a stateful variable inside `$effect`, it's just synchronizing the Svelte reactivity system with an external system (in this case `localStorage`)...that's what `$effect` is there for!
+
+And yet...
+
+## the problem
+
+The main problem I have with `$effect` is that it's effectively moving updates from the update point to a non-specified point in your code...sometimes this is unavoidable because you don't have control of every single piece of state in your application. For example: Svelte, under the hood, converts your template into a template effect. Basically when you do something like this:
+
+```svelte
+<script>
+	let { count } = $props();
+</script>
+
+<b>{count}</b>
+```
+
+Svelte produces code that looks like this:
+
+```ts
+import 'svelte/internal/disclose-version';
+import * as $ from 'svelte/internal/client';
+
+var root = $.from_html(`<b> </b>`);
+
+export default function Component($$anchor, $$props) {
+	var b = root();
+	var text = $.child(b, true);
+
+	$.reset(b);
+	$.template_effect(() => $.set_text(text, $$props.count));
+	$.append($$anchor, b);
+}
+```
+
+So we are making use of `$effect` (an internal version of it) to sync your `count` prop to the `b` element's `textContent`. But here's the key difference: in this case the state comes from the outside world...you don't have full control over it and it could change in a lot of places throughout your application.
+
+How is the local storage example different? Well, because in that case you are creating the state that the user will use throughout their application, you control all of it!
+
+In this specific case there's also another problem with `$effect`...they need cleanup. Since they are keeping track of functions and variables in them, when they are not used anymore they need to clear all the references to those things or the garbage collection mechanism can't dispose of them. That's why you will get an error if you create an `$effect` outside of an `$effect.root` and that's why to allow for the usage of this utility outside of a Svelte component, Puru had to wrap his `$effect` in an `$effect.root`.
+
+And since every `$effect.root` also needs cleanup, he came up with a nice abstraction on top of it that auto-cleans the `$effect.root` if you are inside a Svelte component. But what if you are not in a Svelte component? Well, in that case that `$effect.root` remains uncleaned (also ironically if you are within a Svelte component you don't need `$effect.root` at all). So while this abstraction is a nice way to not get yelled at by Svelte, it's very close to a `@ts-ignore`.
+
+## the solution (?)
+
+So how would I do it? Well, all the state is available to you, and you can always read and write to the local storage (and it's also quick to do so)...everything in this screams `createSubscriber` to me!
+
+```ts
+import { browser } from '$helpers/utils.ts';
+import { on } from 'svelte/events';
+import { createSubscriber } from 'svelte/reactivity';
+
+export class Persisted {
+	#key;
+	#default_value;
+	#subscribe;
+	#update;
+
+	constructor(key, default_value) {
+		this.#key = key;
+		this.#default_value = default_value;
+		if (!browser) return;
+
+		this.#subscribe = createSubscriber((update) => {
+			// we store the update function to update when the user sets a new value
+			this.#update = update;
+			const cleanup = on(window, 'storage', (e) => {
+				if (e.key === key) {
+					// we update when we get a new window event and the key is the same as the current key
+					update();
+				}
+			});
+			return () => {
+				cleanup();
+				this.#update = undefined;
+			};
+		});
+	}
+
+	get current() {
+		if (!browser) return this.#default_value;
+		this.#subscribe?.();
+		const val = localStorage.getItem(this.#key);
+		if (val) {
+			return JSON.parse(val);
+		}
+		return this.#default_value;
+	}
+
+	set current(new_value) {
+		localStorage.setItem(this.#key, JSON.stringify(new_value));
+		this.#update?.();
+	}
+}
+```
+
+Now, while this looks way easier, it's not taking a lot of stuff into account that Puru's code did: validation, TypeScript, custom serialization and deserialization. However, all of this has nothing to do with the reactivity logic, so we are going to skip them for the moment.
+
+But the biggest flaw in this code is that it only works with reassignments...you can do this:
+
+```ts
+persisted.current = [...persisted.current, persisted.current.length];
+```
+
+but you can't do this:
+
+```ts
+persisted.current.push(persisted.current.length);
+```
+
+and that's kind of a bummer.
+
+But we can fix this problem with proxies!
+
+### the `Proxy` api
+
+`Proxy` is one of my favorite browser APIs: just like a network proxy, it allows you to "intercept" some operations on an object and have side effects or even completely change their behavior. Let's see an example.
+
+```ts
+const my_proxy = new Proxy(
+	{
+		name: 'Paolo',
+	},
+	{
+		get(target, key) {
+			if (key === 'name') {
+				return 'Puru';
+			}
+			return Reflect.get(target, key);
+		},
+	},
+);
+
+console.log(`${my_proxy.name} is the better dev!`); // Puru is the better dev!
+```
+
+As you can see, in the get handler we check if the `key` is `'name'` and we return a completely different name than the one present in the object. This is pretty handy and Svelte itself uses a Proxy for stateful values. But it still doesn't solve our problem: this only works for top-level properties.
+
+```ts
+const my_proxy = new Proxy(
+	{
+		dev: {
+			name: 'Paolo',
+		},
+	},
+	{
+		get(target, key) {
+			if (key === 'name') {
+				return 'Puru';
+			}
+			return Reflect.get(target, key);
+		},
+	},
+);
+
+console.log(`${my_proxy.dev.name} is the better dev!`); // Paolo is the better dev!
+```
+
+In this case the `key` is never `'name'` because we are only accessing the `dev` property (leading to the false statement in the console 😝). But since we can change the behavior, what's stopping us from returning a proxied version of `dev`? NOTHING!
+
+```ts
+function proxy(obj) {
+	return new Proxy(obj, {
+		get(target, key) {
+			if (key === 'name') {
+				return 'Puru';
+			}
+			const return_value = Reflect.get(target, key);
+			if (return_value != null && typeof return_value === 'object') {
+				return proxy(return_value);
+			}
+			return return_value;
+		},
+	});
+}
+
+const my_proxy = proxy({
+	dev: {
+		name: 'Paolo',
+	},
+});
+
+console.log(`${my_proxy.dev.name} is the better dev!`); // Puru is the better dev!
+```
+
+This time around the order is restored because when we access `dev`, since the return should be an object, we wrap that object in a proxy too and the check for `name` is in place also for nested elements. This is the magic of <Magic>recursive proxies</Magic>!
+
+## the better (?) solution
+
+We can use this newfound power to fix our utility.
+
+```ts
+import { browser } from '$helpers/utils.ts';
+import { on } from 'svelte/events';
+import { createSubscriber } from 'svelte/reactivity';
+
+/**
+ * We need to keep passing the root object, the key and the update function
+ * around because when you set one key in reality you want to store the whole
+ * object in the local storage. You obviously need the key to do that and you need
+ * to invoke `update` to trigger the reactive behavior
+ */
+function proxy(value, root, root_key, update) {
+	return new Proxy(value, {
+		get(target, key) {
+			const val = Reflect.get(target, key);
+			// as long as the requested object it's an object we keep proxying it
+			// passing along the root, key and update function
+			if (val != null && typeof val === 'object') {
+				return proxy(val, root, root_key, update);
+			}
+			return val;
+		},
+		set(target, key, value) {
+			// we update the object (since target it's a reference will also update the root object)
+			Reflect.set(target, key, value);
+			// we write `root` to the local storage and trigger the update
+			localStorage.setItem(root_key, JSON.stringify(root));
+			update();
+			return true;
+		},
+	});
+}
+
+export class Persisted {
+	#key;
+	#default_value;
+	#subscribe;
+	#update;
+
+	constructor(key, default_value) {
+		this.#key = key;
+		this.#default_value = default_value;
+		if (!browser) return;
+
+		this.#subscribe = createSubscriber((update) => {
+			// we store the update function to update when the user sets a new value
+			this.#update = update;
+			const cleanup = on(window, 'storage', (e) => {
+				if (e.key === key) {
+					// we update when we get a new window event and the key is the same as the current key
+					update();
+				}
+			});
+			return () => {
+				cleanup();
+				this.#update = undefined;
+			};
+		});
+	}
+
+	get current() {
+		if (!browser) return this.#default_value;
+		this.#subscribe?.();
+		const val = localStorage.getItem(this.#key);
+		if (val) {
+			const return_value = JSON.parse(val);
+			if (return_value != null && typeof return_value === 'object') {
+				return proxy(return_value, return_value, this.#key, this.#update);
+			}
+			return return_value;
+		}
+		// we also need to proxy the default value if the key has not been set already and the default value it's an object
+		if (typeof this.#default_value === 'object') {
+			return proxy(this.#default_value, this.#default_value, this.#key, this.#update);
+		}
+		return this.#default_value;
+	}
+
+	set current(new_value) {
+		localStorage.setItem(this.#key, JSON.stringify(new_value));
+		this.#update?.();
+	}
+}
+```
+
+This may seem more complex than the initial solution, but it has a couple of advantages:
+
+- You don't need to care about `$effect.root` and when to clean it up anymore: you can just use this utility in a Svelte component or in a TypeScript file and it will work regardless.
+- It will only listen for updates on the local storage if it needs to: if you never read it in a reactive context you don't need to listen for updates because the next time you read it it will be the latest value.
+- The update of the values happens where you would expect it to happen...it's right in the set function of the proxy!
+
+## is this the best solution?
+
+Absolutely not! I wrote this while writing this blog post, testing it in this [Sveltelab playground](https://www.sveltelab.dev/f01096k35wwtboh). It's not tested, doesn't deal with default parsing or with validation. But a very similar (and better) implementation is [available in Runed](https://runed.dev/docs/utilities/persisted-state) and as I've said, it's not like Puru's implementation is inherently bad, so you can use that too! 🧡

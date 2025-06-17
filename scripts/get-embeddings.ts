@@ -26,9 +26,9 @@ if (to_request.length < 0) {
 	process.exit();
 }
 
-const open_api_key = process.env.OPEN_API_KEY;
+const voyage_api_key = process.env.VOYAGE_API_KEY;
 
-if (!open_api_key) {
+if (!voyage_api_key) {
 	console.error("Can't load embeddings without an open api key in your .env");
 	process.exit();
 }
@@ -40,15 +40,15 @@ for (const request of to_request) {
 			const content = await readFile(resolve(process.cwd(), `${request}/index.svx`), {
 				encoding: 'utf-8',
 			});
-			return await fetch('https://api.openai.com/v1/embeddings', {
+			return await fetch('https://api.voyageai.com/v1/embeddings', {
 				method: 'POST',
 				headers: {
-					authorization: `Bearer ${open_api_key}`,
+					authorization: `Bearer ${voyage_api_key}`,
 					'content-type': 'application/json',
 				},
 				body: JSON.stringify({
-					input: content,
-					model: 'text-embedding-ada-002',
+					input: [content],
+					model: 'voyage-3.5',
 				}),
 			})
 				.then((res) => res.json())
@@ -69,5 +69,3 @@ for (const embedding of embeddings) {
 }
 
 await Promise.allSettled(writing_promises);
-
-execSync('git add .');
