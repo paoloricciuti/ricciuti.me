@@ -8,7 +8,7 @@
 <svelte:head>
 	<title>ricciuti.me - {data.article.metadata.title}</title>
 </svelte:head>
-<article class="m-auto max-w-[75ch]">
+<article class="m-auto mb-16 max-w-[75ch]">
 	<h1>{data.article.metadata.title}</h1>
 	<span class="text-xs"
 		>Published <time datetime={published.toISOString()}>{date_formatter.format(published)}</time
