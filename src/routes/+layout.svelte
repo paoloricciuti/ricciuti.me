@@ -23,7 +23,27 @@
 		github: 'https://github.com/paoloricciuti',
 		bsky: 'https://bsky.app/profile/ricciuti.me',
 	};
+
+	function get_og() {
+		if ($page.url.pathname.match(/\/blog\/.+/)) {
+			return $page.url.pathname;
+		}
+		if ($page.url.pathname === '/') {
+			return '/home/home';
+		}
+		return `${$page.url.pathname}${$page.url.pathname}`;
+	}
 </script>
+
+<svelte:head>
+	<title>ricciuti.me</title>
+	<meta name="description" content="Tech blog and personal website of a mad scientist" />
+	<meta property="og:title" content="ricciuti.me" />
+	<meta property="og:description" content="Tech blog and personal website of a mad scientist" />
+	<meta property="og:image" content="https://ricciuti.me/og{get_og()}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ricciuti.me/" />
+</svelte:head>
 
 <header
 	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 bg-[var(--bg)] p-4 font-mono"
