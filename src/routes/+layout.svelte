@@ -5,7 +5,7 @@
 	import '../tokens.css';
 	import '../shiki.css';
 	import Logo from '$lib/components/Logo.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	import Socials from '$lib/components/Socials.svelte';
 
@@ -25,13 +25,13 @@
 	};
 
 	function get_og() {
-		if ($page.url.pathname.match(/\/blog\/.+/)) {
-			return $page.url.pathname;
+		if (page.url.pathname.match(/\/blog\/.+/)) {
+			return page.url.pathname;
 		}
-		if ($page.url.pathname === '/') {
+		if (page.url.pathname === '/' || page.url.pathname === '') {
 			return '/home/home';
 		}
-		return `${$page.url.pathname}${$page.url.pathname}`;
+		return `${page.url.pathname}${page.url.pathname}`;
 	}
 </script>
 
@@ -53,7 +53,7 @@
 	<p class="text-center text-xs opacity-50">tech blog and personal website of a mad scientist</p>
 	<ul class="mt-4 flex flex-wrap justify-center gap-2">
 		{#each Object.entries(pages) as [title, href]}
-			{@const current_page = $page.url.pathname === href}
+			{@const current_page = page.url.pathname === href}
 			<li>
 				<a {href} class:text-brand-600={current_page} class:dark:text-brand-500={current_page}
 					>{title}</a
