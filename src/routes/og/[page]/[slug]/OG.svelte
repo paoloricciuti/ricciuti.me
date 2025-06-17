@@ -1,11 +1,78 @@
 <script lang="ts">
-	let { title }: { title: string } = $props();
+	let { title, kind }: { title: string; kind: string } = $props();
 </script>
 
-<main
-	class="flex h-full flex-col items-center border-8 border-[#ff3e0077] bg-zinc-900 p-8 text-zinc-100"
+<div
+	style="
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+		background: linear-gradient(135deg, oklch(27.4% 0.006 286.033) 0%, #3d1612 50%, oklch(27.4% 0.006 286.033) 100%);
+		color: #f4f4f5;
+		padding: 48px;
+		position: relative;
+	"
 >
-	<p class="text-4xl">ricciuti.me</p>
-	<p class="text-lg opacity-50">tech blog and personal website of a mad scientist</p>
-	<p class="mt-16 text-center text-8xl">{title}</p>
-</main>
+	<div style="display: flex; align-items: center; justify-content: space-between;">
+		<div style="display: flex; align-items: center;">
+			<div style="display: flex; flex-direction: column;">
+				<div style="display: flex; font-size: 32px; font-weight: bold; letter-spacing: -0.025em;">
+					ricciuti.me
+				</div>
+				<div style="display: flex; font-size: 16px; color: #a1a1aa; margin-top: 4px;">
+					tech blog & experiments
+				</div>
+			</div>
+		</div>
+
+		<div style="display: flex;">
+			<div
+				style="display: flex; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; margin-right: 4px;"
+			></div>
+			<div
+				style="display: flex; width: 8px; height: 8px; background: #f97316; border-radius: 50%; margin-right: 4px;"
+			></div>
+			<div
+				style="display: flex; width: 8px; height: 8px; background: #eab308; border-radius: 50%;"
+			></div>
+		</div>
+	</div>
+
+	<div style="display: flex; align-items: center; justify-content: center; flex: 1; padding: 32px;">
+		<div
+			style="
+				font-size: 72px;
+				font-weight: bold;
+				text-align: center;
+				line-height: 1.1;
+				letter-spacing: -0.025em;
+				background: linear-gradient(90deg, #ffffff 0%, #f4f4f5 50%, #d4d4d8 100%);
+				background-clip: text;
+				-webkit-background-clip: text;
+				color: transparent;
+			"
+		>
+			{title}
+		</div>
+	</div>
+
+	<div
+		style="display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: #71717a;"
+	>
+		<div>mad scientist at work</div>
+		<div style="display: flex; align-items: center;">
+			<div
+				style="
+					display: flex;
+					width: 32px;
+					height: 4px;
+					background: linear-gradient(90deg, #ef4444 0%, #f97316 100%);
+					border-radius: 2px;
+					margin-right: 8px;
+				"
+			></div>
+			<span>{kind}</span>
+		</div>
+	</div>
+</div>

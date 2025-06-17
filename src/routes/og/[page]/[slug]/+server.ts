@@ -55,10 +55,10 @@ export async function entries() {
 	return entries;
 }
 
-export async function GET({ params: { slug } }) {
+export async function GET({ params: { slug, page } }) {
 	const article = articles.find((a) => a.slug === slug);
 
-	const result = render(OG, { props: { title: article?.title ?? 'Cool' } });
+	const result = render(OG, { props: { title: article?.title ?? 'paolo ricciuti', kind: page } });
 
 	const element = toReactNode(
 		`${he.decode(result.body, { isAttributeValue: true })}${result.head}`,
