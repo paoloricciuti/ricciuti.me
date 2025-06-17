@@ -21,7 +21,7 @@
 					ricciuti.me
 				</div>
 				<div style="display: flex; font-size: 16px; color: #a1a1aa; margin-top: 4px;">
-					tech blog & experiments
+					tech blog & personal website
 				</div>
 			</div>
 		</div>
