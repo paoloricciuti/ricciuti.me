@@ -15,7 +15,7 @@ Hi, fellow netizen and welcome 👋
 
 I'm glad you found this blog and I guess I'm also glad you want to know something more about me.
 
-My name is Paolo Ricciuti and I come from a small city in Italy, I have ~ `new Date().getFullYear() - 1989` years.
+My name is Paolo Ricciuti and I come from a small city in Italy, I am ~ `new Date().getFullYear() - 1989` years old.
 
 I have a computer science degree and I started developing when I was 17 years (with PHP 4 😱).
 
