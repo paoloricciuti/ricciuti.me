@@ -1,0 +1,13 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "Svelte, Svelte Everywhere!",
+	"description": "Recently I've been working hard to bring the custom renderer API to svelte! This will unlock the ability to render a svelte component to something other than DOM: be It a native app, a PDF or even a terminal application. Let's explore the challenges we faced while working on it, how we surpassed them and what the future looks like.",
+	"events": [
+		{
+			"event": "Svelte London Meetup",
+			"watch": "https://www.youtube.com/watch?v=LKSmlp2S-jQ",
+			"slides": "https://svelte-everywhere.ricciuti.app",
+			"date": "2025-06-25"
+		}
+	]
+}
