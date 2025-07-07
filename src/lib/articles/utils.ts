@@ -1,5 +1,6 @@
 import { cosinesim } from '$lib/math';
 import { article_schema } from '$lib/schemas';
+import * as v from 'valibot';
 
 export async function get_articles() {
 	const articles_import = import.meta.glob('$lib/articles/**/index.svx');
@@ -7,7 +8,7 @@ export async function get_articles() {
 	for (const article_location in articles_import) {
 		const { slug } =
 			article_location.match(/\/src\/lib\/articles\/(?<slug>.*)\/index.svx/)?.groups ?? {};
-		const { metadata } = article_schema.parse(await articles_import[article_location]());
+		const { metadata } = v.parse(article_schema, await articles_import[article_location]());
 		articles.push({
 			slug,
 			...metadata,

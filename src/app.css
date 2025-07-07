@@ -5,25 +5,25 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --breakpoint-2xs: 350px;
+	--breakpoint-2xs: 350px;
 
-  --color-brand-50: #fff5ec;
-  --color-brand-100: #ffe9d3;
-  --color-brand-200: #ffcea5;
-  --color-brand-300: #ffac6d;
-  --color-brand-400: #ff7d32;
-  --color-brand-500: #ff590a;
-  --color-brand-600: #ff3e00;
-  --color-brand-700: #cc2902;
-  --color-brand-800: #a1210b;
-  --color-brand-900: #821e0c;
-  --color-brand-950: #3d1612;
+	--color-brand-50: #fff5ec;
+	--color-brand-100: #ffe9d3;
+	--color-brand-200: #ffcea5;
+	--color-brand-300: #ffac6d;
+	--color-brand-400: #ff7d32;
+	--color-brand-500: #ff590a;
+	--color-brand-600: #ff3e00;
+	--color-brand-700: #cc2902;
+	--color-brand-800: #a1210b;
+	--color-brand-900: #821e0c;
+	--color-brand-950: #3d1612;
 
-  --background-color-current: var(--bg);
+	--background-color-current: var(--bg);
 
-  --grid-template-columns-main: 1fr auto;
+	--grid-template-columns-main: 1fr auto;
 
-  --grid-template-rows-main: auto auto 1fr;
+	--grid-template-rows-main: auto auto 1fr;
 }
 
 /*
@@ -35,13 +35,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
 }
 
 :root {
