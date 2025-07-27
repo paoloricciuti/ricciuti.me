@@ -50,7 +50,7 @@
 		"he": "^1.2.0",
 		"lucide-svelte": "^0.525.0",
 		"remark-preview": "^1.0.2",
-		"satori": "^0.15.2",
+		"satori": "^0.16.0",
 		"satori-html": "^0.3.2",
 		"shiki": "^3.0.0",
 		"svelte-eslint-parser": "^1.0.0",
