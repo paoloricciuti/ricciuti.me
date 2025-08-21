@@ -13,6 +13,11 @@
 			"event": "techcamp Hamburg",
 			"date": "2025-06-03",
 			"slides": "https://enhance-svelte.vercel.app/"
+		},
+		{
+			"event": "Frontkon#25",
+			"date": "2025-10-01",
+			"slides": "https://enhance-svelte.vercel.app/"
 		}
 	]
 }
