@@ -6,7 +6,8 @@
 	})).map(([filename, value])=>{
 		const { groups: { slug }} = filename.match(/\/src\/lib\/talks\/(?<slug>.+)\.json/);
 		const events = value.events.map(event => ({...event, date: new Date(event.date)})).sort((a, b)=> b.date.getTime() - a.date.getTime());
-		return { ...value, events, date: events[0].date, slug };
+		// use the max possible date to bubble eventless talks on top
+		return { ...value, events, date: events[0]?.date ?? new Date(8640000000000000), slug };
 	}).sort((a, b) =>  b.date.getTime() - a.date.getTime());
 </script>
 

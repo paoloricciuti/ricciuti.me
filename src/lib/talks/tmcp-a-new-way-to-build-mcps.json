@@ -1,0 +1,6 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "TMCP: a new way to build MCP servers in TS",
+	"description": "The typescript SDK provider by the official model context protocol organization is nice and has a lot of features baked in. But it also has a few problems that makes it difficult to use with modern frameworks. TMCP is a brand new alternative sdk, fully featured with an aim to a lean, modern API and ease of use. In this talk we are gonna explore what those limitations are and take a look at how TMCP solves them.",
+	"events": []
+}

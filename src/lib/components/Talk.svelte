@@ -99,6 +99,11 @@
 					>
 				{/if}{event}{air_date}</small
 			>
+		{:else}
+			<p>
+				this talk hasn't been presented at any events yet. If you're interested in being the first
+				to host it, please <a href="/contacts">get in touch</a>!
+			</p>
 		{/each}
 	</div>
 	<details>
@@ -131,6 +136,9 @@
 	}
 	.events {
 		display: grid;
+		p {
+			margin-block: 0rem;
+		}
 	}
 	article {
 		--padding: 0.5rem;
@@ -147,6 +155,7 @@
 		}
 		&:has(:target)::after {
 			content: '';
+			pointer-events: none;
 			position: absolute;
 			inset: 0;
 			background-image: linear-gradient(45deg, transparent 10%, white 20%, transparent 35%);
