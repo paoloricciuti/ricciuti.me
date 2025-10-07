@@ -5,7 +5,8 @@
 	"events": [
 		{
 			"date": "2025-10-16",
-			"event": "The Context - a MCP Summit Live Stream"
+			"event": "The Context - a MCP Summit Live Stream",
+			"slides": "https://tmcp.ricciuti.app"
 		}
 	]
 }
