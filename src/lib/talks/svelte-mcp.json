@@ -1,0 +1,6 @@
+{
+	"$schema": "../schemas/talks.json",
+	"title": "How I taught LLMs how to Svelte",
+	"description": "It's undeniable that LLMs are slowly (and not even that much) but steadily changing the way we write code. But they have a problem: once you start using something outside of their training set, the performance quickly degrades.<br /><br />Releasing Svelte 5 (with a pretty big syntax rewrite) right before those LLMs started to get good at code was unfortunate, but luckily, there's a way around this! MCP servers can add context for the LLM and guide our future overlords on how to write perfect Svelte code. Learn how we've built the official Svelte MCP and which techniques we used to make LLMs master Svelte 5's runes and reactivity!",
+	"events": []
+}
