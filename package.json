@@ -48,7 +48,7 @@
 	"dependencies": {
 		"@resvg/resvg-js": "^2.6.2",
 		"he": "^1.2.0",
-		"lucide-svelte": "^0.546.0",
+		"lucide-svelte": "^0.548.0",
 		"remark-preview": "^1.0.2",
 		"satori": "^0.18.0",
 		"satori-html": "^0.3.2",
