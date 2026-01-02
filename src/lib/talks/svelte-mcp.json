@@ -5,7 +5,9 @@
 	"events": [
 		{
 			"event": "The Context",
-			"date": "2025-12-11"
+			"date": "2025-12-11",
+			"slides": "https://svelte-mcp.ricciuti.app/",
+			"watch": "https://youtu.be/DL6zvhq0I_4"
 		}
 	]
 }
