@@ -15,8 +15,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       lucide-svelte:
-        specifier: ^0.560.0
-        version: 0.560.0(svelte@5.46.0)
+        specifier: ^0.562.0
+        version: 0.562.0(svelte@5.46.0)
       remark-preview:
         specifier: ^1.0.2
         version: 1.0.3
@@ -1480,8 +1480,8 @@ packages:
   loupe@3.2.1:
     resolution: {integrity: sha512-CdzqowRJCeLU72bHvWqwRBBlLcMEtIvGrlvef74kMnV2AolS9Y8xUv1I0U/MNAWMhBlKIoyuEgoJ0t/bbwHbLQ==}
 
-  lucide-svelte@0.560.0:
-    resolution: {integrity: sha512-TsQV0pQp3wl++PHCYTRWiJPBZbJ+kVDxXASEF+r4FDw1dn5zSq1aDqxXjqkZ/1Ks6K7ND8xYmy8W6m3kVaoaMw==}
+  lucide-svelte@0.562.0:
+    resolution: {integrity: sha512-kSJDH/55lf0mun/o4nqWBXOcq0fWYzPeIjbTD97ywoeumAB9kWxtM06gC7oynqjtK3XhAljWSz5RafIzPEYIQA==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -3459,7 +3459,7 @@ snapshots:
 
   loupe@3.2.1: {}
 
-  lucide-svelte@0.560.0(svelte@5.46.0):
+  lucide-svelte@0.562.0(svelte@5.46.0):
     dependencies:
       svelte: 5.46.0
 
