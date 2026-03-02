@@ -1,0 +1,12 @@
+diff --git a/dist/main-hjyl9aFB.js b/dist/main-hjyl9aFB.js
+index 5f699aa2bfc1dbf936b6fea53f85ffa1f704a24c..c1a437a046e9de7f6e7deca2cecc34af913aa859 100644
+--- a/dist/main-hjyl9aFB.js
++++ b/dist/main-hjyl9aFB.js
+@@ -23732,6 +23732,7 @@ function extract_parts(nodes) {
+ 		instance: [],
+ 		module: [],
+ 		css: [],
++		_comments: [],
+ 	};
+ 
+ 	// iterate through all top level child nodes and assign them to the correct 'part'
