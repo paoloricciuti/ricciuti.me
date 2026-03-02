@@ -1,0 +1,17 @@
+[
+	{
+		"name": "Kevin Åberg Kultalahti",
+		"blog": "https://kevinak.se",
+		"description": "Co-founder of Svelte Society, organizer of Svelte Summit, Svelte pilled"
+	},
+	{
+		"name": "Scott Spence",
+		"blog": "https://scottspence.com",
+		"description": "Svelte London organizer, AI precursor, tall and handsome"
+	},
+	{
+		"name": "Ben McCann",
+		"blog": "https://benmccann.com",
+		"description": "SvelteKit maintainer, e18e obsessive, can't stay away from OSS"
+	}
+]

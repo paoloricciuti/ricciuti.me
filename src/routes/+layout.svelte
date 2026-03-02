@@ -28,7 +28,7 @@
 		if (page.url.pathname.match(/\/blog\/.+/)) {
 			return page.url.pathname;
 		}
-		if (page.url.pathname === '/' || page.url.pathname === '') {
+		if (page.url.pathname === '/') {
 			return '/home/home';
 		}
 		return `${page.url.pathname}${page.url.pathname}`;
@@ -47,7 +47,7 @@
 </svelte:head>
 
 <header
-	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 bg-[var(--bg)] p-4 font-mono"
+	class="sticky top-0 z-50 m-auto grid w-full max-w-7xl place-items-center gap-2 bg-(--bg) p-4 font-mono"
 >
 	<ThemeSwitcher />
 	<h1 class="text-4xl">ricciuti.me</h1>
@@ -79,6 +79,14 @@
 		{@render children?.()}
 	</section>
 </main>
+<div class="flex-1"></div>
+<footer class="m-auto grid w-full place-items-center gap-2 p-4 pt-12 font-mono text-xs">
+	<p>
+		want to read more awesome stuff? see my <a class="text-brand-600" href="/blog-circle"
+			>blog circle</a
+		>.
+	</p>
+</footer>
 
 <style lang="postcss">
 	@reference "../app.css";
