@@ -2,6 +2,9 @@
 	"name": "ricciuti.me",
 	"version": "0.0.1",
 	"private": true,
+	"engines": {
+		"pnpm": "10.21.0"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
