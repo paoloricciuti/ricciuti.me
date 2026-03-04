@@ -1,6 +1,6 @@
 ---
-title: MCP is ~not~ dead, long live MCP
-published: 2026-03-02
+title: MCP is NOT dead, long live MCP
+published: 2026-03-04
 ---
 
 <script>
@@ -131,7 +131,7 @@ Also you know what else bloats your context? Thousands of **SKILLs**! A badly co
 
 ### Distribution
 
-If you've never dealt with a package manager in your life I envy you. NPM, despite being commonly mocked, is actually decently good. But publishing a CLI forces you to deal with it. You have to make sure your users are on the latest version, keep older versions of your API just in case someone installed your CLI globally and is still using that old endpoint. You need to instruct your users about installing the right package manager or provide them with a `curl ... | sh` command they can run to download and update your cli.
+If you've never dealt with a package manager in your life I envy you. `npm`, despite being commonly mocked, is actually decently good. But publishing a CLI forces you to deal with it. You have to make sure your users are on the latest version, keep older versions of your API just in case someone installed your CLI globally and is still using that old endpoint. You need to instruct your users about installing the right package manager or provide them with a `curl ... | sh` command they can run to download and update your cli.
 
 MCP doesn't have the most straightforward installation method (each client is a bit different, you have to sometimes touch configuration files etc) but once you installed your MCP server (especially if you are developing one with Streamable HTTP) your user will never need to touch that again. You will push changes to your server and next time around, like magic, your users will have the new version of the server.
 
@@ -149,6 +149,6 @@ The argument in favor of CLI also naively assumes the only thing you care about 
 
 ## Conclusions
 
-Does this article claim that you should never build a CLI and always build an MCP server? Heck no! CLIs are a powerful tool and, when it makes sense, you should absolutely use them. But please, don't declare MCP dead if you haven't even explored its full potential.
+Does this article claim that you should never build a CLI and always build an MCP server? Heck no (in fact I plan to add a CLI transport to `tmcp` to convert your MCP server into a CLI with automatic `--help` and arguments validation 👀)! CLIs are a powerful tool and, when it makes sense, you should absolutely use them. But please, don't declare MCP dead if you haven't even explored its full potential.
 
 Skills, MCP, CLIs all have their place in our agentic workflows and being able to recognize the value of each is what a good engineer should do.
