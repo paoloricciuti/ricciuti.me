@@ -18,11 +18,11 @@ Unless you've been living under a rock in the past year or so, chances are, you'
 
 ## MCP: Model Context Protocol
 
-The name for MCP is pretty self explanatory: it's a protocol to modify the context of a model.
+The name for MCP is pretty self-explanatory: it's a protocol to modify the context of a model.
 
 However if you are not into AI this might sound just as gibberish as the acronym itself: let's break it down further.
 
-To this day when we talk about AI we generally refer to LLM which stands for Large Language Model. Those are huge (one might say **large**) matrices of weights that condense the characteristics of the human **language** in one simplified **model** that can then generate sentences that sounds and feel just like human generated sentences.
+To this day when we talk about AI we generally refer to LLM which stands for Large Language Model. Those are huge (one might say **large**) matrices of weights that condense the characteristics of the human **language** in one simplified **model** that can then generate sentences that sound and feel just like human generated sentences.
 
 The M in **M**CP refers to this specific model.
 
@@ -30,21 +30,21 @@ When you ask something to a model it will produce results based on its enormous 
 
 > today is {Intl.DateTimeFormat().format()}, here's a link to check the weather, can you tell me if Sunday is a good day for a picnic?
 
-the model will be able to get this new info (someone might call it **context**) and including it in it's "knowledge base" to then answer your question.
+the model will be able to get this new info (someone might call it **context**) and including it in its "knowledge base" to then answer your question.
 
 As hinted with the bolding in my previous sentence this is the C in M**C**P.
 
-Finally the P: protocol. A protocol is non other than a contract between two parties that allows them to communicate effectively and without ambiguity. An example of a protocol is the Hyper Media Transfer Protocol, more commonly known as HTTP. This allows two parties (your HTTP server and, generally, a browser) to communicate over the network.
+Finally the P: protocol. A protocol is none other than a contract between two parties that allows them to communicate effectively and without ambiguity. An example of a protocol is the HyperText Transfer Protocol, more commonly known as HTTP. This allows two parties (your HTTP server and, generally, a browser) to communicate over the network.
 
-The same is true for MCP: developers can build MCP servers (like the [Svelte](https://github.com/sveltejs/ai-tools), [Contex7](https://github.com/upstash/context7) or the [Storybook](https://github.com/storybookjs/mcp) MCP servers just to name a few) and MCP clients (like Claude Code, Opencode, VS Code, Codex. Gemini CLI etc).
+The same is true for MCP: developers can build MCP servers (like the [Svelte](https://github.com/sveltejs/ai-tools), [Context7](https://github.com/upstash/context7) or the [Storybook](https://github.com/storybookjs/mcp) MCP servers just to name a few) and MCP clients (like Claude Code, Opencode, VS Code, Codex. Gemini CLI etc).
 
 This system allows developers of MCP servers to expose a variety of primitives:
 
 - **Tools**: functions that the LLM can "call" with specific arguments to get more context or act on behalf of the user.
 - **Resources**: files the server can expose to the user to include their content as context for the LLM before sending the prompt.
-- **Prompts**: pre-packed prompts with optionals arguments that populate the user input box
+- **Prompts**: pre-packed prompts with optional arguments that populate the user input box
 
-MCP servers also have an official way to authenticate the user which allow all of these primitives to be user specific (a tool that lists **your** Jira tickets, a prompt specifically tailored to **your** role etc)
+MCP servers also have an official way to authenticate the user which allows all of these primitives to be user specific (a tool that lists **your** Jira tickets, a prompt specifically tailored to **your** role etc)
 
 ## But...why?
 
@@ -52,7 +52,7 @@ _"Thanks for the explanation nerd... but why do we need all of this?"_
 
 First thing first, rude.
 
-Second: when models where not that great and people mostly copy-pasted their entire modules into chat GPT back and forth, a few visionaries started experimenting with AI over APIs, giving specific instructions to the LLM through the system prompt.
+Second: when models were not that great and people mostly copy-pasted their entire modules into ChatGPT back and forth, a few visionaries started experimenting with AI over APIs, giving specific instructions to the LLM through the system prompt.
 
 ```
 You have the following tools available, if you want to execute one of them just write `function_name(arg1, arg2)` as a message.
@@ -63,27 +63,27 @@ write_file(name: string, content: string)
 
 They would then check for this string in the return messages and invoke the specific function. A few abstractions later and tools like the [ai sdk](https://ai-sdk.dev/docs/introduction) were born!
 
-You could declare your own tools and the SDK did all the rest invoking your functions when the LLM requested them. People built all sort of workflows with these systems but something felt missing: there was no standard way to do things. Everything was re-built from scratch every time and in a slightly different way. LLMs (from now on Agents) struggled to keep up because, being a next token predictor, they really liked when things had a certain structure.
+You could declare your own tools and the SDK did all the rest invoking your functions when the LLM requested them. People built all sorts of workflows with these systems but something felt missing: there was no standard way to do things. Everything was re-built from scratch every time and in a slightly different way. LLMs (from now on Agents) struggled to keep up because, being a next token predictor, they really liked when things had a certain structure.
 
 So Anthropic decided to take things in their own hands and 25th of November 2024 [Announced the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) to the world. The interesting bit is that models were specifically trained to interact with it (via tool calls).
 
-The protocol was an immediate success... more and more companies started to contribute to the protocol itself introducing a proper way to do authentication, a way to host the server as an HTTP server (initially the only available transport was STDIO where the client launches a subprocess and communicate with it over Standard In and Standard Out) and adding more and more functionalities and capabilities (like the newly released extension [MCP Apps](https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/) that allows you to show a fully fledged UI within your client).
+The protocol was an immediate success... more and more companies started to contribute to the protocol itself introducing a proper way to do authentication, a way to host the server as an HTTP server (initially the only available transport was STDIO where the client launches a subprocess and communicates with it over Standard In and Standard Out) and adding more and more functionalities and capabilities (like the newly released extension [MCP Apps](https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/) that allows you to show a fully fledged UI within your client).
 
 Everybody and their mother was building an MCP server (both because it was objectively very useful to allow agents to interact with your product AND because it was the easiest way to answer the question "What's our company doing with AI?").
 
-But this lead to...
+But this led to...
 
 ## The problem
 
-Let's imagine we are at the beginning of the 90's. HTTP starts spreading and everybody start building their own HTTP server. One might be tempted to compare those servers with the ones that we build nowadays but those two couldn't be more distance. The meat is the same but the care and attention to details that frameworks used to build them put into making them secure, efficient and reliable is unmatched.
+Let's imagine we are at the beginning of the 90's. HTTP starts spreading and everybody starts building their own HTTP server. One might be tempted to compare those servers with the ones that we build nowadays but those two couldn't be more distant. The meat is the same but the care and attention to details that frameworks used to build them put into making them secure, efficient and reliable is unmatched.
 
-Even the shape of the API was all over the place as frameworks like REST would not be released until the 2000.
+Even the shape of the API was all over the place as frameworks like REST would not be released until the 2000s.
 
-In one word those HTTP server were just **bad**.
+In one word those HTTP servers were just **bad**.
 
-The same is true for the early MCP servers: every company rushed to build one, every user rushed to install as many as possible. This lead to bad architected servers piling up in the user configuration filling the limited context with a lot of non-useful information. And context is the most precious of the resources in an agent.
+The same is true for the early MCP servers: every company rushed to build one, every user rushed to install as many as possible. This led to badly architected servers piling up in the user configuration filling the limited context with a lot of non-useful information. And context is the most precious of the resources in an agent.
 
-People started talking about how MCP bloats the context because for every MCP server you add all the tools definitions and descriptions were included (and the most popular MCP server had hundreds of tools with page long descriptions).
+People started talking about how MCP bloats the context because for every MCP server you add all the tools definitions and descriptions are included (and the most popular MCP server had hundreds of tools with page long descriptions).
 
 And I'm not gonna lie: this was and **IS** a problem.
 
@@ -91,7 +91,7 @@ As usual engineers do what engineers love to do: they find solutions to the prob
 
 Then Anthropic released [skills](https://claude.com/blog/skills) which on first look seems completely different from MCP servers: there's no server to host, no program to write. Just a markdown file and optionally a bunch of references and scripts you tell the Agent to execute. But the end goal was the same: inject the context into the LLM. Skills are not loaded immediately, just the name and the short description are available for the LLM which then proceed to read the file autonomously if it thinks it's needed.
 
-All of this lead to the discourse that prompted me to write this article...
+All of this led to the discourse that prompted me to write this article...
 
 ## Necrologies
 
@@ -101,7 +101,7 @@ _"Alright, Anthropic said MCP has a problem...therefore MCP is dead!"_
 
 <img src={search} alt="A google search showing a lot of articles and videos declaring MCP dead" />
 
-And tbf I can see why one would think that: the conclusion all of them reached out is that Agents are already very good at using CLIs. There's a lot of training data out there that shows how to invoke the `gh` cli so why would I bloat the context with the GitHub MCP server that has a bunch of tools I will never use? Why should I add the Jira MCP server if Agents can just do `jira issue view` and, most importantly, I can also use the same CLI to view my issues?
+And tbf I can see why one would think that: the conclusion all of them reached is that Agents are already very good at using CLIs. There's a lot of training data out there that shows how to invoke the `gh` cli so why would I bloat the context with the GitHub MCP server that has a bunch of tools I will never use? Why should I add the Jira MCP server if Agents can just do `jira issue view` and, most importantly, I can also use the same CLI to view my issues?
 
 _"Wait a second... you seem to agree with them!"_
 
@@ -117,21 +117,21 @@ That's absolutely true... those CLIs have thousands of usage examples in the tra
 
 _"But you can solve this with a `--help` flag"_
 
-That's true. But remember what we said before? MCP was born as a way to standardize things so that Agents (that, as a reminder, are just next token predictors) could be actually trained in use the tool. If everybody is writing it's own CLI with it's own API your Agent will have to re-learn to use your CLI every time, wasting precious context and maybe even doing it wrong.
+That's true. But remember what we said before? MCP was born as a way to standardize things so that Agents (that, as a reminder, are just next token predictors) could be actually trained to use the tool. If everybody is writing its own CLI with its own API your Agent will have to re-learn to use your CLI every time, wasting precious context and maybe even doing it wrong.
 
-### MCPs bloats your context
+### MCP bloats your context
 
-Yeah, if you add thousands of bad designed MCP servers your context will mostly be comprised of MCP tools descriptions. But that's not how you should use MCP servers!
+Yeah, if you add thousands of badly designed MCP servers your context will mostly be comprised of MCP tools descriptions. But that's not how you should use MCP servers!
 
 An MCP server is just like a dependency in your code. You shouldn't blindly add every single one you found. You should see the interface, verify that it's not malicious, check that the descriptions are not bloated and that the tools are coherent (and not just generated from their official open api spec).
 
 Once you find an MCP server you can use don't add that globally unless you are really using that MCP server every single time. Add it locally, only in the projects you are using that specific technology (there's no point in adding the Svelte MCP server in your TS library project). If your client supports it keep your MCP server disabled and enable them when you need to use them.
 
-Also you know what else bloat your context? Thousands of **SKILLs**! A bad constructed SKILL can have the same bloated description as a bad constructed MCP server. And if the SKILL is loaded and it has an even bigger description and doesn't split the references it doesn't matter that there's no tool definition... it will bloat your context in the same way.
+Also you know what else bloats your context? Thousands of **SKILLs**! A badly constructed SKILL can have the same bloated description as a badly constructed MCP server. And if the SKILL is loaded and it has an even bigger description and doesn't split the references it doesn't matter that there's no tool definition... it will bloat your context in the same way.
 
 ### Distribution
 
-If you've never dealt with a package manager in your life I envy you. NPM, despite being commonly mocked on, is actually decently good. But publishing a CLI forces you to deal with it. You have to make sure your users are on the latest version, keep older versions of your API just in case someone installed your CLI globally and is still using that old endpoint. You need to instruct your users about installing the right package manager or provide them with a `curl ... | sh` command they can run to download and update your cli.
+If you've never dealt with a package manager in your life I envy you. NPM, despite being commonly mocked, is actually decently good. But publishing a CLI forces you to deal with it. You have to make sure your users are on the latest version, keep older versions of your API just in case someone installed your CLI globally and is still using that old endpoint. You need to instruct your users about installing the right package manager or provide them with a `curl ... | sh` command they can run to download and update your cli.
 
 MCP doesn't have the most straightforward installation method (each client is a bit different, you have to sometimes touch configuration files etc) but once you installed your MCP server (especially if you are developing one with Streamable HTTP) your user will never need to touch that again. You will push changes to your server and next time around, like magic, your users will have the new version of the server.
 
@@ -141,7 +141,7 @@ This also brings me to...
 
 As I've said before you need to vet your MCP servers, make sure they can't inadvertently prompt inject you, and the same security concern I'm about to describe also applies to stdio MCP servers... that said a CLI definitely has this disadvantage: it's a process that is running on your computer!
 
-You are one supply chain attach away from leaking all of your secrets and the more CLIs you install to interact with your services the bigger the surface area become. With a remote MCP server the risk is at least mitigated. Obviously an MCP server could still prompt inject your LLM into leaking your secrets if you don't pay attention but at least that's the only surface area you have: running a CLI means that the CLI itself can read and write to whatever file in your computer and it can do that silently without a single _"Great, I'll now call https⁠://maliciouswebsite.com/leak-env like you asked me to do"_ to even warn you.
+You are one supply chain attack away from leaking all of your secrets and the more CLIs you install to interact with your services the bigger the surface area becomes. With a remote MCP server the risk is at least mitigated. Obviously an MCP server could still prompt inject your LLM into leaking your secrets if you don't pay attention but at least that's the only surface area you have: running a CLI means that the CLI itself can read and write to whatever file in your computer and it can do that silently without a single _"Great, I'll now call https⁠://maliciouswebsite.com/leak-env like you asked me to do"_ to even warn you.
 
 ### Capabilities
 
@@ -149,6 +149,6 @@ The argument in favor of CLI also naively assumes the only thing you care about 
 
 ## Conclusions
 
-Does this article claim is that you should never build a CLI and always build an MCP server? Heck no! CLIs are a powerful tool and, when it makes sense, you should absolutely use them. But please, don't declare MCP dead if you don't even explored his full potential.
+Does this article claim that you should never build a CLI and always build an MCP server? Heck no! CLIs are a powerful tool and, when it makes sense, you should absolutely use them. But please, don't declare MCP dead if you haven't even explored its full potential.
 
-Skills, MCP, CLIs all have their place our agentic workflows and being able to recognize the value of each is what a good engineer should do.
+Skills, MCP, CLIs all have their place in our agentic workflows and being able to recognize the value of each is what a good engineer should do.
