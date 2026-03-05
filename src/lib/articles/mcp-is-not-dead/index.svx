@@ -20,13 +20,13 @@ Unless you've been living under a rock in the past year or so, chances are, you'
 
 The name for MCP is pretty self-explanatory: it's a protocol to modify the context of a model.
 
-However if you are not into AI this might sound just as gibberish as the acronym itself: let's break it down further.
+However if you are not into AI this might sound just as gibberish as the acronym itself. Let's break it down further.
 
 To this day when we talk about AI we generally refer to LLM which stands for Large Language Model. Those are huge (one might say **large**) matrices of weights that condense the characteristics of the human **language** in one simplified **model** that can then generate sentences that sound and feel just like human generated sentences.
 
 The M in **M**CP refers to this specific model.
 
-When you ask something to a model it will produce results based on its enormous training set. However this is sometimes not enough: if I ask an LLM if next Sunday would be a good day for a picnic, the model has no information about what day is today, let alone what's the current high/low pressure situation all around the globe to be able to make that prediction. But the user can change that: when you are prompting you are effectively introducing new knowledge in the model so if you say something like
+When you ask something to a model it will produce results based on its enormous training set. However, this is sometimes not enough. If I ask an LLM if next Sunday would be a good day for a picnic, the model has no information about what day it is, let alone what the weather will be in order to make that prediction. But the user can change that: when you are prompting you are effectively introducing new knowledge in the model so if you say something like
 
 > today is {Intl.DateTimeFormat().format()}, here's a link to check the weather, can you tell me if Sunday is a good day for a picnic?
 
@@ -36,7 +36,7 @@ As hinted with the bolding in my previous sentence this is the C in M**C**P.
 
 Finally the P: protocol. A protocol is none other than a contract between two parties that allows them to communicate effectively and without ambiguity. An example of a protocol is the HyperText Transfer Protocol, more commonly known as HTTP. This allows two parties (your HTTP server and, generally, a browser) to communicate over the network.
 
-The same is true for MCP: developers can build MCP servers (like the [Svelte](https://github.com/sveltejs/ai-tools), [Context7](https://github.com/upstash/context7) or the [Storybook](https://github.com/storybookjs/mcp) MCP servers just to name a few) and MCP clients (like Claude Code, Opencode, VS Code, Codex. Gemini CLI etc).
+The same is true for MCP. Developers can build MCP servers (like the [Svelte](https://github.com/sveltejs/ai-tools), [Context7](https://github.com/upstash/context7) or [Storybook](https://github.com/storybookjs/mcp) servers just to name a few) and MCP clients (like Claude Code, Opencode, VS Code, Codex, Gemini CLI etc).
 
 This system allows developers of MCP servers to expose a variety of primitives:
 
@@ -52,7 +52,7 @@ _"Thanks for the explanation nerd... but why do we need all of this?"_
 
 First thing first, rude.
 
-Second: when models were not that great and people mostly copy-pasted their entire modules into ChatGPT back and forth, a few visionaries started experimenting with AI over APIs, giving specific instructions to the LLM through the system prompt.
+Second, when models were not that great and people mostly copy-pasted their entire codebase into ChatGPT back and forth, a few visionaries started experimenting with AI over APIs, giving specific instructions to the LLM through the system prompt.
 
 ```
 You have the following tools available, if you want to execute one of them just write `function_name(arg1, arg2)` as a message.
@@ -63,7 +63,7 @@ write_file(name: string, content: string)
 
 They would then check for this string in the return messages and invoke the specific function. A few abstractions later and tools like the [ai sdk](https://ai-sdk.dev/docs/introduction) were born!
 
-You could declare your own tools and the SDK did all the rest invoking your functions when the LLM requested them. People built all sorts of workflows with these systems but something felt missing: there was no standard way to do things. Everything was re-built from scratch every time and in a slightly different way. LLMs (from now on Agents) struggled to keep up because, being a next token predictor, they really liked when things had a certain structure.
+You could declare your own tools, and the SDK did all the rest by invoking your functions when the LLM requested them. People built all sorts of workflows with these systems but something felt missing: there was no standard way to do things. Everything was re-built from scratch every time and in a slightly different way. LLMs (from now on Agents) struggled to keep up because, being a next token predictor, they really liked when things had a certain structure.
 
 So Anthropic decided to take things in their own hands and 25th of November 2024 [Announced the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) to the world. The interesting bit is that models were specifically trained to interact with it (via tool calls).
 
@@ -81,15 +81,15 @@ Even the shape of the API was all over the place as frameworks like REST would n
 
 In one word those HTTP servers were just **bad**.
 
-The same is true for the early MCP servers: every company rushed to build one, every user rushed to install as many as possible. This led to badly architected servers piling up in the user configuration filling the limited context with a lot of non-useful information. And context is the most precious of the resources in an agent.
+The same is true for the early MCP servers. Every company rushed to build one, and every user rushed to install as many as possible. This led to badly architected servers piling up in the user configuration, and filling the limited context with a lot of non-useful or potentially misleading information. And context is the most precious of resources for an agent.
 
-People started talking about how MCP bloats the context because for every MCP server you add all the tools definitions and descriptions are included (and the most popular MCP server had hundreds of tools with page long descriptions).
+People started talking about how MCP bloats the context because for every MCP server you add all the tools definitions and descriptions are included (and the most popular MCP servers had hundreds of tools with page long descriptions).
 
-And I'm not gonna lie: this was and **IS** a problem.
+And I'm not gonna lie, this was and **IS** a problem.
 
-As usual engineers do what engineers love to do: they find solutions to the problems. Both [Cloudflare](https://blog.cloudflare.com/code-mode/) and [Anthropic](https://www.anthropic.com/engineering/code-execution-with-mcp) realized that instead of letting the agent have all the tools definitions and descriptions they could've generated a Typescript interface with the MCP server and asked the agent to build a script with that. This reduced the context bloat and allowed intermediate results to not fill up the context even more (if you had to fetch a list and select the first element of the list the code could do that without loading the whole list in the context).
+As usual engineers do what engineers love to do, they find solutions to the problems. Both [Cloudflare](https://blog.cloudflare.com/code-mode/) and [Anthropic](https://www.anthropic.com/engineering/code-execution-with-mcp) realized that instead of letting the agent have all the tool definitions and descriptions, they could generate a Typescript interface with the MCP server and ask the agent to build a script with that. This reduced the context bloat and allowed intermediate results to not fill up the context even more (if you had to fetch a list and select the first element of the list, the code could do that without have to load the whole list in the context).
 
-Then Anthropic released [skills](https://claude.com/blog/skills) which on first look seems completely different from MCP servers: there's no server to host, no program to write. Just a markdown file and optionally a bunch of references and scripts you tell the Agent to execute. But the end goal was the same: inject the context into the LLM. Skills are not loaded immediately, just the name and the short description are available for the LLM which then proceed to read the file autonomously if it thinks it's needed.
+Then Anthropic released [skills](https://claude.com/blog/skills), which on first look seems completely different from MCP servers. There's no server to host, or program to write. It's just a markdown file and (optionally) a bunch of references and scripts you want the Agent to execute. But the end goal was the same, injecting context into the LLM. Skills are not loaded immediately, just the name and a short description are provided to the LLM, which then proceeds to read the file autonomously if it thinks it's needed.
 
 All of this led to the discourse that prompted me to write this article...
 
@@ -101,7 +101,7 @@ _"Alright, Anthropic said MCP has a problem...therefore MCP is dead!"_
 
 <img src={search} alt="A google search showing a lot of articles and videos declaring MCP dead" />
 
-And tbf I can see why one would think that: the conclusion all of them reached is that Agents are already very good at using CLIs. There's a lot of training data out there that shows how to invoke the `gh` cli so why would I bloat the context with the GitHub MCP server that has a bunch of tools I will never use? Why should I add the Jira MCP server if Agents can just do `jira issue view` and, most importantly, I can also use the same CLI to view my issues?
+And tbf I can see why one would think that: the conclusion all of them reached is that Agents are already very good at using CLIs. There's a lot of training data out there that shows how to invoke the `gh` cli for example, so why would I bloat the context with the GitHub MCP server that has a bunch of tools I will never use? Why should I add the Jira MCP server if Agents can just do `jira issue view` and, most importantly, I can also use the same CLI to view my issues - no clanker needed?!
 
 _"Wait a second... you seem to agree with them!"_
 
@@ -125,9 +125,9 @@ Yeah, if you add thousands of badly designed MCP servers your context will mostl
 
 An MCP server is just like a dependency in your code. You shouldn't blindly add every single one you found. You should see the interface, verify that it's not malicious, check that the descriptions are not bloated and that the tools are coherent (and not just generated from their official open api spec).
 
-Once you find an MCP server you can use don't add that globally unless you are really using that MCP server every single time. Add it locally, only in the projects you are using that specific technology (there's no point in adding the Svelte MCP server in your TS library project). If your client supports it keep your MCP server disabled and enable them when you need to use them.
+Once you find an MCP server don't add it globally unless you are really using that MCP server every single time. Add it locally, only in the projects you are using that specific technology (there's no point in adding the Svelte MCP server in your TS library project). If your client supports it keep your MCP server disabled and enable them when you need to use them.
 
-Also you know what else bloats your context? Thousands of **SKILLs**! A badly constructed SKILL can have the same bloated description as a badly constructed MCP server. And if the SKILL is loaded and it has an even bigger description and doesn't split the references it doesn't matter that there's no tool definition... it will bloat your context in the same way.
+Also you know what else bloats your context? Thousands of **SKILLs**! A badly constructed SKILL can have the same bloated description as a badly constructed MCP server. And if the SKILL is loaded and it has an even bigger description and doesn't split the references, it doesn't matter that there's no tool definition... it will bloat your context in the same way.
 
 ### Distribution
 
@@ -145,7 +145,7 @@ You are one supply chain attack away from leaking all of your secrets and the mo
 
 ### Capabilities
 
-The argument in favor of CLI also naively assumes the only thing you care about MCP servers is `tools`. That couldn't be further from reality: while it's true that a few of the capabilities in the MCP spec are not for everyone (looking at you [roots](https://modelcontextprotocol.io/specification/2025-11-25/client/roots)) most of the primitives are there for a reason. Resources and Prompts are a very powerful tool for the user to steer the model deterministically. Elicitation allows a tool to ask more questions to the user while being executed (LLMs reeeeeally struggle with interactive CLIs so no, that's not an option). Sampling allows you to **USE THE HOST LLM TO DO INFERENCE TASKS FOR THEM**.
+The argument in favor of CLI also naively assumes the only thing your MCP servers is doing is providing tools. That couldn't be further from reality. While it's true that a few of the capabilities in the MCP spec are not for everyone (looking at you [roots](https://modelcontextprotocol.io/specification/2025-11-25/client/roots)) most of the primitives are there for a reason. Resources and Prompts are a very powerful way for the user to steer the model deterministically. Elicitation allows a tool to ask more questions to the user while being executed (LLMs reeeeeally struggle with interactive CLIs so no, that's not an option). Sampling allows you to **USE THE HOST LLM TO DO INFERENCE TASKS FOR THEM**.
 
 ## Conclusions
 
