@@ -47,6 +47,14 @@ articles.push({
 	published: '',
 });
 
+articles.push({
+	slug: 'blog-circle',
+	title: 'friends and people with blogs worth checking out',
+	preview: '',
+	preview_html: '',
+	published: '',
+});
+
 export async function entries() {
 	const entries = articles.map((article) => ({
 		slug: article.slug,
@@ -90,7 +98,7 @@ export async function GET({ params: { slug, page } }) {
 
 	const image = resvg.render();
 
-	return new Response(image.asPng(), {
+	return new Response(image.asPng() as never, {
 		headers: {
 			'content-type': 'image/png',
 		},
