@@ -1,2 +1,4 @@
 patchedDependencies:
   mdsvex@0.12.6: patches/mdsvex@0.12.6.patch
+onlyBuiltDependencies:
+  - esbuild
