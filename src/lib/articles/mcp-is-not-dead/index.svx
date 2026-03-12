@@ -139,9 +139,9 @@ This also brings me to...
 
 ### Security
 
-As I've said before you need to vet your MCP servers, make sure they can't inadvertently prompt inject you, and the same security concern I'm about to describe also applies to stdio MCP servers... that said a CLI definitely has this disadvantage: it's a process that is running on your computer!
+As I've said before you need to vet your MCP servers and make sure they can't inadvertently prompt inject you. And yes, if you're running stdio MCP servers locally, the risk is the same as CLIs: both are processes on your machine, both need to be vetted, and both can do whatever they want to your system. 
 
-You are one supply chain attack away from leaking all of your secrets and the more CLIs you install to interact with your services the bigger the surface area becomes. With a remote MCP server the risk is at least mitigated. Obviously an MCP server could still prompt inject your LLM into leaking your secrets if you don't pay attention but at least that's the only surface area you have: running a CLI means that the CLI itself can read and write to whatever file in your computer and it can do that silently without a single _"Great, I'll now call https⁠://maliciouswebsite.com/leak-env like you asked me to do"_ to even warn you.
+However, if you're running a remote MCP server, it's not running on your machine and so it can't do anything to it directly. Sure, prompt injection may still be a problem but the risk is much less especially when we consider that LLMs are more resistant these days, and your harness likely has some protections in place. Maybe it could try to trick the LLM into exfiltrating your data, but that has to happen visibly through the conversation. You'd see something like *"Great, I'll now call https://maliciouswebsite.com/leak-env"* before anything happens. A compromised CLI doesn't need to ask.
 
 ### Capabilities
 
