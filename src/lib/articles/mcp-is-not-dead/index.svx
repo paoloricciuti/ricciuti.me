@@ -149,6 +149,6 @@ The argument in favor of CLI also naively assumes the only thing your MCP server
 
 ## Conclusions
 
-Does this article claim that you should never build a CLI and always build an MCP server? Heck no (in fact I plan to add a CLI transport to `tmcp` to convert your MCP server into a CLI with automatic `--help` and arguments validation 👀)! CLIs are a powerful tool and, when it makes sense, you should absolutely use them. But please, don't declare MCP dead if you haven't even explored its full potential.
+Does this article claim that you should never build a CLI and always build an MCP server? Heck no (in fact I have [a PR open](https://github.com/paoloricciuti/tmcp/pull/340) to add a CLI transport to `tmcp` to convert your MCP server into a CLI with automatic `--help` and arguments validation 👀)! CLIs are a powerful tool and, when it makes sense, you should absolutely use them. But please, don't declare MCP dead if you haven't even explored its full potential.
 
 Skills, MCP, CLIs all have their place in our agentic workflows and being able to recognize the value of each is what a good engineer should do.
