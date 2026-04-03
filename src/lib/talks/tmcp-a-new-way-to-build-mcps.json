@@ -4,6 +4,11 @@
 	"description": "The typescript SDK provider by the official model context protocol organization is nice and has a lot of features baked in. But it also has a few problems that makes it difficult to use with modern frameworks. TMCP is a brand new alternative sdk, fully featured with an aim to a lean, modern API and ease of use. In this talk we are gonna explore what those limitations are and take a look at how TMCP solves them.",
 	"events": [
 		{
+			"date": "2026-05-07",
+			"event": "DevWorld 2026",
+			"slides": "https://tmcp.ricciuti.app"
+		},
+		{
 			"date": "2025-10-16",
 			"event": "The Context - a MCP Summit Live Stream",
 			"slides": "https://tmcp.ricciuti.app",
