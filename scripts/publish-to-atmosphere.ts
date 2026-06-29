@@ -4,7 +4,7 @@ import { readMarkdownFiles } from '@mastrojs/markdown';
 
 const identifier = 'paolo.ricciuti.me';
 const password = process.env.ATPROTO_PASSWORD;
-const pub_url = new URL('https://ricciuti.me/blog/');
+const pub_url = new URL('https://ricciuti.me/blog');
 
 const publication: Publication = {
 	url: pub_url,
@@ -30,7 +30,7 @@ const posts = await readMarkdownFiles<{ title: string; published: string }>(
 const docs: Document[] = posts.map((p) => ({
 	title: p.meta.title,
 	publishedAt: new Date(p.meta.published),
-	url: new URL(p.path.split('/').slice(-2, -1)[0], pub_url),
+	url: new URL(p.path.split('/').slice(-2, -1)[0], pub_url + '/'),
 }));
 
 await createOrUpdateStandardSite({ identifier, password }, publication, docs, {
