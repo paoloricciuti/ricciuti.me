@@ -7,6 +7,7 @@
 
 <svelte:head>
 	<title>ricciuti.me - {data.article.metadata.title}</title>
+	<link rel="site.standard.document" href={data.at_url} />
 </svelte:head>
 <article class="m-auto mb-16 max-w-[75ch]">
 	<h1>{data.article.metadata.title}</h1>

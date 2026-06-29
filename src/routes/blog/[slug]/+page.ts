@@ -7,7 +7,7 @@ export async function entries() {
 	return articles.map((article) => ({ slug: article.slug }));
 }
 
-export async function load({ params: { slug } }) {
+export async function load({ params: { slug }, data }) {
 	const imported = await import(`$lib/articles/${slug}/index.svx`);
 	const suggestions_slugs = (await calculate_similarity(slug)).slice(0, 3);
 	const suggestions: { slug: string; article: Article['metadata'] }[] = [];
@@ -17,5 +17,5 @@ export async function load({ params: { slug } }) {
 		suggestions.push({ slug, article: validated_suggestion.metadata });
 	}
 	const validated = v.parse(article_schema, imported);
-	return { article: validated, suggestions };
+	return { article: validated, suggestions, ...data };
 }

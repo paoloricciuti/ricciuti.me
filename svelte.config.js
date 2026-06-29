@@ -8,6 +8,13 @@ const config = {
 	preprocess: [mdsvex(mdsvexConfig)],
 	kit: {
 		adapter: adapter(),
+		prerender: {
+			handleInvalidUrl({ message, referrer }) {
+				if (!message.startsWith('Invalid URL at://')) {
+					throw new Error(message);
+				}
+			},
+		},
 	},
 };
 
