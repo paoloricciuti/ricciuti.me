@@ -11,7 +11,8 @@
 		{
 			"event": "JSNation 2026",
 			"date": "2026-06-11",
-			"slides": "https://svelte-mcp.ricciuti.app/"
+			"slides": "https://svelte-mcp.ricciuti.app/",
+			"watch": "https://gitnation.com/contents/how-i-taught-llms-how-to-svelte-3504"
 		},
 		{
 			"event": "The Context",
