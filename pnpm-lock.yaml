@@ -5,9 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  mdsvex@0.12.6:
-    hash: a525a58cdf0d4117149e84d74696c283c740d1c4fe6ef6459a40d9be0425d19f
-    path: patches/mdsvex@0.12.6.patch
+  mdsvex@0.12.6: a525a58cdf0d4117149e84d74696c283c740d1c4fe6ef6459a40d9be0425d19f
 
 importers:
 
