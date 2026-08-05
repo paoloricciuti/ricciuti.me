@@ -1,4 +1,5 @@
 import { ATPROTO_IDENTIFIER, ATPROTO_PASSWORD, ATPROTO_SERVICE } from '$app/env/private';
+import slugify from 'slugify';
 import { prerender } from '$app/server';
 import { PasswordSession } from '@atproto/lex-password-session';
 import * as id from '../../lexicons/id';
@@ -27,6 +28,7 @@ export const get_talks = prerender(async () => {
 		.map((talk) => {
 			return {
 				title: talk.value.title,
+				slug: slugify(talk.value.title?.toString() ?? '', { lower: true, strict: true }),
 				description: talk.value.description,
 				events: deliveries.records
 					.filter(

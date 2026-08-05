@@ -68,6 +68,7 @@
 		"satori": "^0.26.0",
 		"satori-html": "^0.3.2",
 		"shiki": "^3.0.0",
+		"slugify": "^1.6.9",
 		"svelte-eslint-parser": "^1.0.0",
 		"sveltekit-embed": "^0.0.22",
 		"valibot": "^1.1.0"
