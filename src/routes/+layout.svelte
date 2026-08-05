@@ -26,10 +26,10 @@
 
 	function get_og() {
 		if (page.url.pathname.match(/\/blog\/.+/)) {
-			return page.url.pathname;
+			return `${page.url.pathname}.png`;
 		}
 		if (page.url.pathname === '/') {
-			return '/home/home';
+			return '/home/home.png';
 		}
 		return `${page.url.pathname}${page.url.pathname}.png`;
 	}
