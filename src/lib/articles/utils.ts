@@ -1,9 +1,9 @@
-import { cosinesim } from '$lib/math';
-import { article_schema } from '$lib/schemas';
+import { cosinesim } from '#lib/math/index.js';
+import { article_schema } from '#lib/schemas/index.js';
 import * as v from 'valibot';
 
 export async function get_articles() {
-	const articles_import = import.meta.glob('$lib/articles/**/index.svx');
+	const articles_import = import.meta.glob('#lib/articles/**/index.svx');
 	const articles = [];
 	for (const article_location in articles_import) {
 		const { slug } =
@@ -23,7 +23,7 @@ export async function get_articles() {
 }
 
 export async function calculate_similarity(slug: string) {
-	const embeddings_import = import.meta.glob('$lib/articles/**/embedding.json');
+	const embeddings_import = import.meta.glob('#lib/articles/**/embedding.json');
 	const embedding_map = new Map<string, number[]>();
 	for (const [path, embedding_promise] of Object.entries(embeddings_import)) {
 		const embedding = await embedding_promise();

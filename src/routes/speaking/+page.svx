@@ -1,14 +1,8 @@
 <script>
 	import Talk from '#lib/components/Talk.svelte';
+	import { get_talks } from "#lib/talks/talks.remote.js";
 
-	const talks = Object.entries(import.meta.glob("$lib/talks/*.json", {
-		eager: true,
-	})).map(([filename, value])=>{
-		const { groups: { slug }} = filename.match(/\/src\/lib\/talks\/(?<slug>.+)\.json/);
-		const events = value.events.map(event => ({...event, date: new Date(event.date)})).sort((a, b)=> b.date.getTime() - a.date.getTime());
-		// use the max possible date to bubble eventless talks on top
-		return { ...value, events, date: events[0]?.date ?? new Date(8640000000000000), slug };
-	}).sort((a, b) =>  b.date.getTime() - a.date.getTime());
+	const talks = $derived(await get_talks());
 </script>
 
 <svelte:head>

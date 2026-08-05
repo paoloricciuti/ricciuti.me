@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "lexicons": [
+    "id.sifa.profile.presentation",
+    "id.sifa.profile.presentationDelivery"
+  ],
+  "resolutions": {
+    "community.lexicon.calendar.event": {
+      "uri": "at://did:plc:mtr7qrqtcyseedx3jyr5o7db/com.atproto.lexicon.schema/community.lexicon.calendar.event",
+      "cid": "bafyreigv256whv46vep4xb2iqn6ag7z5abhvebd46ohuqvopxl56ptobbi"
+    },
+    "community.lexicon.location.address": {
+      "uri": "at://did:plc:mtr7qrqtcyseedx3jyr5o7db/com.atproto.lexicon.schema/community.lexicon.location.address",
+      "cid": "bafyreicdvexolyvp6j6yksqiib7hihwktt6ogalbvyzvtkj6ecrtqqw5fq"
+    },
+    "community.lexicon.location.fsq": {
+      "uri": "at://did:plc:mtr7qrqtcyseedx3jyr5o7db/com.atproto.lexicon.schema/community.lexicon.location.fsq",
+      "cid": "bafyreigqx7wxb4cmz3aex6pcjs6vwqwaqldzn3xvrml3yrpq623u6cnjpe"
+    },
+    "community.lexicon.location.geo": {
+      "uri": "at://did:plc:mtr7qrqtcyseedx3jyr5o7db/com.atproto.lexicon.schema/community.lexicon.location.geo",
+      "cid": "bafyreiansycpa3ggyxqnttzb7ir3dw654s2vk7nldpss6jz65m5zh5frzu"
+    },
+    "community.lexicon.location.hthree": {
+      "uri": "at://did:plc:mtr7qrqtcyseedx3jyr5o7db/com.atproto.lexicon.schema/community.lexicon.location.hthree",
+      "cid": "bafyreic6xmiv4ycbcfvcvj5uu537ytl7hnjazcxf7hhd7g6o6s7p6tonky"
+    },
+    "id.sifa.defs": {
+      "uri": "at://did:plc:2f2ahswozqy4v5lvu676375y/com.atproto.lexicon.schema/id.sifa.defs",
+      "cid": "bafyreieluvjzqqyqcu2diwuuegshtksuvupsefvm3nvwkxlrtmb5toafi4"
+    },
+    "id.sifa.profile.presentation": {
+      "uri": "at://did:plc:2f2ahswozqy4v5lvu676375y/com.atproto.lexicon.schema/id.sifa.profile.presentation",
+      "cid": "bafyreicum6lt4nwprpckqgoqnwf47q6hmjji2gf7bykjcit4rdlgoyf3vm"
+    },
+    "id.sifa.profile.presentationDelivery": {
+      "uri": "at://did:plc:2f2ahswozqy4v5lvu676375y/com.atproto.lexicon.schema/id.sifa.profile.presentationDelivery",
+      "cid": "bafyreiav2ieb4vbjs2g6ghbo7mxfn4rbnabmnhgtek7pivqq4kqr3aodmi"
+    }
+  }
+}
