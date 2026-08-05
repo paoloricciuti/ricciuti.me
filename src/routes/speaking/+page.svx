@@ -1,5 +1,5 @@
 <script>
-	import Talk from '$lib/components/Talk.svelte';
+	import Talk from '#lib/components/Talk.svelte';
 
 	const talks = Object.entries(import.meta.glob("$lib/talks/*.json", {
 		eager: true,

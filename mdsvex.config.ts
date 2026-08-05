@@ -1,4 +1,5 @@
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
+// @ts-expect-error no types
 import preview, { htmlFormatter, textFormatter } from 'remark-preview';
 import { createHighlighter } from 'shiki';
 
@@ -12,7 +13,7 @@ const config = defineConfig({
 	highlight: {
 		highlighter(code, lang) {
 			const html = highlighter.codeToHtml(code, {
-				lang,
+				lang: lang ?? '',
 				themes: {
 					light: 'github-light',
 					dark: 'github-dark',

@@ -6,7 +6,7 @@ import { render } from 'svelte/server';
 import Menlo from './Menlo-Regular.ttf';
 import OG from './OG.svelte';
 import { get_icon_code, load_emoji } from './tweemoji';
-import { get_articles } from '$lib/articles/utils';
+import { get_articles } from '#lib/articles/utils.js';
 
 const height = 630;
 const width = 1200;

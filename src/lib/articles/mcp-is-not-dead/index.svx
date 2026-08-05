@@ -5,7 +5,7 @@ published: 2026-03-04
 
 <script>
 	import search from "./search.png";
-	import Infobox from "$lib/components/Infobox.svelte";
+	import Infobox from "#lib/components/Infobox.svelte";
 </script>
 
 <Infobox title="Bias disclosure">
@@ -139,9 +139,9 @@ This also brings me to...
 
 ### Security
 
-As I've said before you need to vet your MCP servers and make sure they can't inadvertently prompt inject you. And yes, if you're running stdio MCP servers locally, the risk is the same as CLIs: both are processes on your machine, both need to be vetted, and both can do whatever they want to your system. 
+As I've said before you need to vet your MCP servers and make sure they can't inadvertently prompt inject you. And yes, if you're running stdio MCP servers locally, the risk is the same as CLIs: both are processes on your machine, both need to be vetted, and both can do whatever they want to your system.
 
-However, if you're running a remote MCP server, it's not running on your machine and so it can't do anything to it directly. Sure, prompt injection may still be a problem but the risk is much less especially when we consider that LLMs are more resistant these days, and your harness likely has some protections in place. Maybe it could try to trick the LLM into exfiltrating your data, but that has to happen visibly through the conversation. You'd see something like *"Great, I'll now call https://maliciouswebsite.com/leak-env"* before anything happens. A compromised CLI doesn't need to ask.
+However, if you're running a remote MCP server, it's not running on your machine and so it can't do anything to it directly. Sure, prompt injection may still be a problem but the risk is much less especially when we consider that LLMs are more resistant these days, and your harness likely has some protections in place. Maybe it could try to trick the LLM into exfiltrating your data, but that has to happen visibly through the conversation. You'd see something like _"Great, I'll now call https://maliciouswebsite.com/leak-env"_ before anything happens. A compromised CLI doesn't need to ask.
 
 ### Capabilities
 

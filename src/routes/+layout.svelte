@@ -4,10 +4,10 @@
 	import '../app.css';
 	import '../tokens.css';
 	import '../shiki.css';
-	import Logo from '$lib/components/Logo.svelte';
+	import Logo from '#lib/components/Logo.svelte';
 	import { page } from '$app/state';
-	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
-	import Socials from '$lib/components/Socials.svelte';
+	import ThemeSwitcher from '#lib/components/ThemeSwitcher.svelte';
+	import Socials from '#lib/components/Socials.svelte';
 
 	let { children } = $props();
 
@@ -31,7 +31,7 @@
 		if (page.url.pathname === '/') {
 			return '/home/home';
 		}
-		return `${page.url.pathname}${page.url.pathname}`;
+		return `${page.url.pathname}${page.url.pathname}.png`;
 	}
 </script>
 

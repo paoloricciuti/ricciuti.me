@@ -1,5 +1,5 @@
 <script>
-	import me from "$lib/assets/me.jpg";
+	import me from "#lib/assets/me.jpg";
 </script>
 
 <svelte:head>

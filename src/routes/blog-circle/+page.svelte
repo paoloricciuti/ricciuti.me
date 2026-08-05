@@ -1,5 +1,5 @@
 <script>
-	import blog_circle from '$lib/blog-circle.json';
+	import blog_circle from '#lib/blog-circle.json';
 </script>
 
 <svelte:head>

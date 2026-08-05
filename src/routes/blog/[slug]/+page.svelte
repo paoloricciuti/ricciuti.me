@@ -1,32 +1,42 @@
 <script lang="ts">
-	import { date_formatter } from '$lib/utils';
+	import { get_suggestions } from '#lib/articles/articles.remote.js';
+	import { get_at_url } from '#lib/at-proto/index.remote.js';
+	import { date_formatter } from '#lib/utils.js';
 
-	let { data } = $props();
-	const published = $derived(new Date(data.article.metadata.published));
+	let { params } = $props();
+	const [suggestions, at_url, article] = $derived(
+		await Promise.all([
+			get_suggestions(params.slug),
+			get_at_url(params.slug),
+			import(`../../../lib/articles/${params.slug}/index.svx`),
+		]),
+	);
+	debugger;
+	const published = $derived(new Date(article.metadata.published));
 </script>
 
 <svelte:head>
-	<title>ricciuti.me - {data.article.metadata.title}</title>
-	<link rel="site.standard.document" href={data.at_url} />
+	<title>ricciuti.me - {article.metadata.title}</title>
+	<link rel="site.standard.document" href={at_url} />
 </svelte:head>
 <article class="m-auto mb-16 max-w-[75ch]">
-	<h1>{data.article.metadata.title}</h1>
+	<h1>{article.metadata.title}</h1>
 	<span class="text-xs"
 		>Published <time datetime={published.toISOString()}>{date_formatter.format(published)}</time
 		></span
 	>
 	<hr class="my-2" />
-	<data.article.component />
+	<article.default />
 </article>
 
-{#if data.suggestions.length > 0}
+{#if suggestions.length > 0}
 	If you liked this article you might also like those others
 	<ul>
-		{#each data.suggestions as suggestion}
+		{#each suggestions as suggestion}
 			<li>
 				<a href="/blog/{suggestion.slug}"><strong>{suggestion.article.title}</strong></a>
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				<p>{@html suggestion.article.preview_html}</p>
+				{@html suggestion.article.preview_html}
 			</li>
 		{/each}
 	</ul>

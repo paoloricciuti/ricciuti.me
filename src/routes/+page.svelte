@@ -1,7 +1,5 @@
 <script lang="ts">
 	import Blog from './blog/+page.svelte';
-
-	const { data } = $props();
 </script>
 
 <svelte:head>
@@ -15,4 +13,4 @@
 <p>I speak about a lot of things in this blog but mainly about svelte 🧡</p>
 <p>here some of my latest blog posts for your reading pleasure</p>
 
-<Blog {data} />
+<Blog />

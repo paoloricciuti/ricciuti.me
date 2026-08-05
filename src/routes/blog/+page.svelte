@@ -1,8 +1,10 @@
 <script lang="ts">
-	const { data } = $props();
+	import { get_articles } from '#lib/articles/utils.js';
+
+	const articles = $derived(await get_articles());
 </script>
 
-{#each data.articles as article}
+{#each articles as article}
 	<article class="my-12 grid gap-2">
 		<a class="text-5xl font-bold no-underline" href="/blog/{article.slug}">{article.title}</a>
 		<section class="border-t border-slate-500 p-4 pr-0">

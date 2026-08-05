@@ -4,7 +4,7 @@ published: 2025-06-17
 ---
 
 <script>
-	import Magic from "$lib/components/Magic.svelte";
+	import Magic from "#lib/components/Magic.svelte";
 </script>
 
 So, yesterday I was reading [a blog post by Puru](https://www.puruvj.dev/blog/svelte-5-runic-persist-theming) where he goes over how he built a `Persisted` utility for his project using Svelte 5 runes.

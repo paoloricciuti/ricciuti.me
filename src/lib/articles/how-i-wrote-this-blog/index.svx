@@ -4,7 +4,7 @@ published: 2023-08-25
 ---
 
 <script>
-	import Magic from "$lib/components/Magic.svelte";
+	import Magic from "#lib/components/Magic.svelte";
 </script>
 
 Let's be honest for a moment. There's no real reason at all to write a custom blog when there are pre-built alternatives out there that also give you more exposure, out-of-the-box integrations with the most common content providers, a rich text experience, and much, much more.
@@ -57,7 +57,7 @@ I created an utility function that imports all the articles and their metadata u
 export function get_articles() {
 	// import every index.svx in every folder, the metadata is provided by mdsvex
 	// based on the frontmatter and the plugins installed
-	const articles_import = import.meta.glob('$lib/articles/**/index.svx', {
+	const articles_import = import.meta.glob('#lib/articles/**/index.svx', {
 		eager: true,
 	});
 	const articles = [];
@@ -87,8 +87,8 @@ export function get_articles() {
 and what about the single article I hear you ask? Well dynamic import and sveltekit `+page.ts` is all you need
 
 ```ts
-import { get_articles } from '$lib/articles/utils.js';
-import { article_schema } from '$lib/schemas/index.js';
+import { get_articles } from '#lib/articles/utils.js';
+import { article_schema } from '#lib/schemas/index.js';
 
 export function entries() {
 	const articles = get_articles();
@@ -97,7 +97,7 @@ export function entries() {
 
 export async function load({ params: { slug } }) {
 	// import the actual component with the metadata
-	const imported = await import(`$lib/articles/${slug}/index.svx`);
+	const imported = await import(`#lib/articles/${slug}/index.svx`);
 	const validated = article_schema.parse(imported);
 	return { article: validated };
 }
@@ -109,7 +109,7 @@ And here's how it get's rendered on the page
 
 ```svelte
 <script lang="%ts%">
-	import { date_formatter } from '$lib/utils';
+	import { date_formatter } from '#lib/utils';
 
 	export let data;
 	$: published = new Date(data.article.metadata.published);
@@ -165,13 +165,13 @@ The import is done directly in the `+page.svelte`
 ```ts
 // import all the projects metadata
 const projects_data = import.meta.glob<{ default: ProjectData } & ProjectData>(
-	'$lib/projects/**/index.json',
+	'#lib/projects/**/index.json',
 	{
 		eager: true,
 	},
 );
 // import every image
-const imgs = import.meta.glob<{ default: string }>('$lib/projects/**/img.png', {
+const imgs = import.meta.glob<{ default: string }>('#lib/projects/**/img.png', {
 	eager: true,
 });
 

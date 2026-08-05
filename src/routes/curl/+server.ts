@@ -1,4 +1,4 @@
-import { get_articles } from '$lib/articles/utils';
+import { get_articles } from '#lib/articles/utils.js';
 
 export const prerender = true;
 
@@ -69,7 +69,7 @@ function section_header(title: string) {
 }
 
 function get_talks() {
-	const talks_import = import.meta.glob('$lib/talks/*.json', {
+	const talks_import = import.meta.glob('#lib/talks/*.json', {
 		eager: true,
 	}) as Record<
 		string,
