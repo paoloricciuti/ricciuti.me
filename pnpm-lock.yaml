@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@jsr/mastrojs__atproto@0.2.2':
+    hash: 377b67e15cd854e21de097018db07a3c601a172d3923eb85a93846f9ac98df41
+    path: patches/@jsr__mastrojs__atproto@0.2.2.patch
+
 importers:
 
   .:
@@ -16,7 +21,7 @@ importers:
         version: 0.1.10
       '@mastrojs/atproto':
         specifier: jsr:^0.2.2
-        version: '@jsr/mastrojs__atproto@0.2.2'
+        version: '@jsr/mastrojs__atproto@0.2.2(patch_hash=377b67e15cd854e21de097018db07a3c601a172d3923eb85a93846f9ac98df41)'
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
@@ -3018,7 +3023,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@jsr/mastrojs__atproto@0.2.2':
+  '@jsr/mastrojs__atproto@0.2.2(patch_hash=377b67e15cd854e21de097018db07a3c601a172d3923eb85a93846f9ac98df41)':
     dependencies:
       '@atproto/api': 0.20.22
 

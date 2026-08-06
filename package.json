@@ -14,7 +14,7 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"get-embeddings": "bun run ./scripts/get-embeddings.ts",
-		"publish-athmosphere": "node --env-file .env ./scripts/publish-to-atmosphere.ts"
+		"publish-athmosphere": "node --env-file .env ./scripts/run-with-vite.ts"
 	},
 	"devDependencies": {
 		"@mastrojs/markdown": "jsr:^0.2.2",

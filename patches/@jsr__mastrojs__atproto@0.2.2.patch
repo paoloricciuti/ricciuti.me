@@ -1,0 +1,34 @@
+diff --git a/src/document.js b/src/document.js
+index 0c6649653f3b8e6c77f4b9c4936277f49301b04a..cb63d5576fbcfa9baa6ea68e56b8cf46f512ed83 100644
+--- a/src/document.js
++++ b/src/document.js
+@@ -61,6 +61,7 @@ const pushDocument = async (agent, publicationUri, action, doc)=>{
+     record: {
+       $type: "site.standard.document",
+       site: publicationUri,
++      ...doc,
+       title: doc.title,
+       publishedAt: doc.publishedAt.toISOString(),
+       path: doc.path,
+diff --git a/src/index.js b/src/index.js
+index b5dc93dae987cd4ab09cc16c098ffd167eac047c..940a433448c33c54a205cd7e391e44a9b34d8218 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -97,7 +97,7 @@ const detectKeyPress = ()=>new Promise((resolve)=>{
+   });
+ const getSession = async (auth)=>{
+   if (typeof auth === "object" && "identifier" in auth) {
+-    const { identifier, password } = auth;
++    const { identifier, password, service } = auth;
+     if (!password) {
+       console.error(`
+ No password found!
+@@ -109,7 +109,7 @@ In your CI/CD pipeline, add the password to a secret manager instead.
+       `);
+       process.exit(1);
+     }
+-    const session = new CredentialSession(new URL("https://bsky.social"));
++    const session = new CredentialSession(new URL(service || "https://bsky.social"));
+     await session.login({
+       identifier,
+       password

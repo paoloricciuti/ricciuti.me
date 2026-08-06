@@ -1,10 +1,37 @@
+import { type Document, type Publication, createOrUpdateStandardSite } from '@mastrojs/atproto';
 import fs from 'node:fs/promises';
-import { createOrUpdateStandardSite, type Publication, type Document } from '@mastrojs/atproto';
-import { readMarkdownFiles } from '@mastrojs/markdown';
+import type { Component } from 'svelte';
+import { render } from 'svelte/server';
 
-const identifier = 'paolo.ricciuti.me';
-const password = process.env.ATPROTO_PASSWORD;
 const pub_url = new URL('https://ricciuti.me/blog');
+const identifier = process.env.ATPROTO_IDENTIFIER ?? 'paolo.ricciuti.me';
+const password = process.env.ATPROTO_PASSWORD;
+const service = process.env.ATPROTO_SERVICE ?? 'https://npmx.social';
+
+const articles = import.meta.glob<{
+	default: Component;
+	metadata: { title: string; published: string; preview: string; preview_html: string };
+}>('#lib/articles/**/*.svx', {
+	eager: true,
+});
+
+const docs = await Promise.all(
+	Object.entries(articles).map(async ([path, module]) => {
+		console.log(path);
+		return {
+			title: module.metadata.title,
+			publishedAt: new Date(module.metadata.published),
+			description: module.metadata.preview,
+			content: {
+				$type: 'site.standard.document.content#html',
+				html: (await render(module.default)).body,
+			},
+			url: new URL(path.split('/').slice(-2, -1)[0], `${pub_url}/`),
+		} satisfies Document & {
+			content: { $type: 'site.standard.document.content#html'; html: string };
+		};
+	}),
+);
 
 const publication: Publication = {
 	url: pub_url,
@@ -19,20 +46,11 @@ const publication: Publication = {
 	basicTheme: {
 		background: { r: 255, g: 255, b: 255 },
 		foreground: { r: 23, g: 24, b: 28 },
-		accent: { r: 255, g: 62, b: 0 }, // button color
+		accent: { r: 219, g: 62, b: 0 }, // button color
 		accentForeground: { r: 255, g: 255, b: 255 }, // button text
 	},
 };
 
-const posts = await readMarkdownFiles<{ title: string; published: string }>(
-	'./src/lib/articles/*/index.svx',
-);
-const docs: Document[] = posts.map((p) => ({
-	title: p.meta.title,
-	publishedAt: new Date(p.meta.published),
-	url: new URL(p.path.split('/').slice(-2, -1)[0], pub_url + '/'),
-}));
-
-await createOrUpdateStandardSite({ identifier, password }, publication, docs, {
+await createOrUpdateStandardSite({ identifier, password, service }, publication, docs, {
 	baseFolder: './static',
 });
