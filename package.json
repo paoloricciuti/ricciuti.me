@@ -58,7 +58,7 @@
 	},
 	"dependencies": {
 		"@atproto/lex": "^0.3.3",
-		"@atproto/lex-password-session": "^0.1.10",
+		"@atproto/lex-password-session": "^0.2.0",
 		"@mastrojs/atproto": "jsr:^0.2.2",
 		"@resvg/resvg-js": "^2.6.2",
 		"@typescript-eslint/parser": "^8.66.0",
