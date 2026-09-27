@@ -17,8 +17,8 @@ importers:
         specifier: ^0.3.3
         version: 0.3.6
       '@atproto/lex-password-session':
-        specifier: ^0.1.10
-        version: 0.1.10
+        specifier: ^0.2.0
+        version: 0.2.3
       '@mastrojs/atproto':
         specifier: jsr:^0.2.2
         version: '@jsr/mastrojs__atproto@0.2.2(patch_hash=377b67e15cd854e21de097018db07a3c601a172d3923eb85a93846f9ac98df41)'
@@ -67,10 +67,10 @@ importers:
         version: 1.58.2
       '@sveltejs/adapter-static':
         specifier: next
-        version: 4.0.0-next.4(@sveltejs/kit@3.0.0-next.27(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))
+        version: 4.0.0-next.4(@sveltejs/kit@3.0.0-next.30(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))
       '@sveltejs/kit':
         specifier: next
-        version: 3.0.0-next.27(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))
+        version: 3.0.0-next.30(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: 7.2.0
         version: 7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))
@@ -213,12 +213,12 @@ packages:
     resolution: {integrity: sha512-PxLQy7jzV8u9zTGURNF8ZczLPk+ZH+WNx/2z/z7RacJbu7sWNpx26U2pC7cIkWtt4jyDaruaLhssw3w3atLotA==}
     engines: {node: '>=22'}
 
-  '@atproto/lex-client@0.3.2':
-    resolution: {integrity: sha512-xn0eRqZ4PJv18Uk0//1k2IN0yhyf8prLcDODcn3S9j1HmQloMCgpPAQNIQSWMoNrBFUpCJizLC62A1Foxmx6ww==}
-    engines: {node: '>=22'}
-
   '@atproto/lex-client@0.3.3':
     resolution: {integrity: sha512-sWChe7Jukm9uxDfxT6ElICp6vMTqAFmwcHdSLdMDtsKBZSrwO7vWL9F6rpoMPyxS29Ob9nNAhMg30kKfZrb+uw==}
+    engines: {node: '>=22'}
+
+  '@atproto/lex-client@0.3.6':
+    resolution: {integrity: sha512-8tPDTyCdMN8qtyODl00oVcBlh26a0HeurOdtJnz9Fcq+dBuRo2XuEcxCUfvwtulOY+zghyw3zAG6fqwxUe2lvw==}
     engines: {node: '>=22'}
 
   '@atproto/lex-data@0.1.7':
@@ -237,20 +237,20 @@ packages:
     resolution: {integrity: sha512-mvrAd0lbyuecIHjyld8QN6MN6CBf4j0GCxLzegsvLh0SvDf+GbYWklkcQqmITL44yFQOwmA/QNIQj0Uvh7+R/g==}
     engines: {node: '>=22'}
 
-  '@atproto/lex-password-session@0.1.10':
-    resolution: {integrity: sha512-uAoL/szrkYti8fo5bMfIpoEi9W7jvGdaBCJOtgj2VUFbxhRBzEJbyc0IAxVH/2GKqzk3nlfHs0vJ2SEPKAFfgw==}
+  '@atproto/lex-password-session@0.2.3':
+    resolution: {integrity: sha512-vwYHenReDfr+i1z92q7Luvjgl1x+rTWJ+L4UqnOjbDiHMLgF3ZAybFMSRCJP7gTSGJDuV8OV6IgE4oL8HVRSAA==}
     engines: {node: '>=22'}
 
   '@atproto/lex-resolver@0.2.8':
     resolution: {integrity: sha512-j3dIxeEAStp/RzJS4MECRDPuOFX41mX9fnteGgrQhe9053eRuTnl2oTyJbV7rKgzy+hEI4jH6X6Y4wOStjUb/Q==}
     engines: {node: '>=22'}
 
-  '@atproto/lex-schema@0.2.4':
-    resolution: {integrity: sha512-60c4aiHVYJQfmLF397d/NUYgrl7XYsnpGZjVLthsLpyn6gBiiFVaL/Pd+azLf/Uztn5ydbGbCxHEsoHsvUZLIg==}
-    engines: {node: '>=22'}
-
   '@atproto/lex-schema@0.2.5':
     resolution: {integrity: sha512-/tP3dRqaZu0EIoq0BSVzhvFGL6u0uu2KFDV21i73DpFsg6TXOTddKJ9bvgK83XdAJYL7PWi703XsaR31v9u5Qg==}
+    engines: {node: '>=22'}
+
+  '@atproto/lex-schema@0.2.7':
+    resolution: {integrity: sha512-K+Ce0SyFPcP19tSo4AhLLEOYnJzKh6sVzhGuB4ZCSto9tHgaVZ3iTQT895IPviZSPjd3+XIRA/rpqWSA2wPGEg==}
     engines: {node: '>=22'}
 
   '@atproto/lex@0.3.6':
@@ -270,12 +270,12 @@ packages:
     resolution: {integrity: sha512-io7Ck4o+40iFXhetHYoEtok2gZ8cWcJ1yRftEHe5AmAF0dSGcYmclbx5GatVew59taw+eSG7Ty5D3llop/0BhA==}
     engines: {node: '>=22'}
 
-  '@atproto/syntax@0.7.3':
-    resolution: {integrity: sha512-7LU8Ra79L5wCqVAZZst2352VMMwkU4KNagVMm6pnURrY/uS7+HrJl3XCuA4V2Gy2dEpkt1r6DBxlsP43/VjDBw==}
-    engines: {node: '>=22'}
-
   '@atproto/syntax@0.7.4':
     resolution: {integrity: sha512-EHsEHtasH/DGPljBYecVDjweGMQ5eTu6Ns0GZ5z0qdqpOI8ipBvldWnMIxWkA+5HfZ9Dsu4V1MX0WP7wgL8cuA==}
+    engines: {node: '>=22'}
+
+  '@atproto/syntax@0.7.6':
+    resolution: {integrity: sha512-luKQTcWw1H1jLmYvX34ldBqNjz2orF082njmcF9fxbWTqVhsO+TpY0FHRKVPoV7dwL0Y3L16DNz1ma0LFGH25g==}
     engines: {node: '>=22'}
 
   '@atproto/xrpc@0.8.2':
@@ -503,6 +503,9 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
+
+  '@jridgewell/sourcemap-codec@1.6.0':
+    resolution: {integrity: sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw==}
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
@@ -768,14 +771,14 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^3.0.0-next.0
 
-  '@sveltejs/kit@3.0.0-next.27':
-    resolution: {integrity: sha512-m2R6GvcMhiAbYVKhzRf5mzLSvcXEuy/H0Va72XvxfEl1ZglrSC/321GKYa6idDHPojuRzkyh9EB0jBZmAwf6+Q==}
+  '@sveltejs/kit@3.0.0-next.30':
+    resolution: {integrity: sha512-hMLBXZc6lFXG27JnCcjuT9UCnF0GOE+yHZIP3cRhQUhkXP67ClXWuoeBNEdPJ8jxSXXTG30bdaQPMTEnnFMuFw==}
     engines: {node: '>=22.17'}
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.0.0
       '@sveltejs/vite-plugin-svelte': ^7.0.0
-      svelte: ^5.56.4
+      svelte: ^5.57.1
       typescript: ^6.0.0
       vite: ^8.0.12
     peerDependenciesMeta:
@@ -1275,8 +1278,8 @@ packages:
   devalue@5.8.1:
     resolution: {integrity: sha512-4CXDYRBGqN+57wVJkuXBYmpAVUSg3L6JAQa/DFqm238G73E1wuyc/JhGQJzN7vUf/CMphYau2zXbfWzDR5aTEw==}
 
-  devalue@5.9.0:
-    resolution: {integrity: sha512-RWrqdArjvPbsATEhOPUo6Wndc/iWnkWKlhIrdlF3zMMYo/c3CVtoaVAyLtWxz5h8nSlkHzxnzV2uLydPXmtF+A==}
+  devalue@5.9.4:
+    resolution: {integrity: sha512-sPAT4pztbu6586/hrhOnMKS17IJrvg12mXiSPSS3W5qDeN2RGgvZ0diZCm31dBbnevfVmujNO3IM2wrS4Y2Rhg==}
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
@@ -1793,8 +1796,8 @@ packages:
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
-  magic-string@1.2.0:
-    resolution: {integrity: sha512-ptco+HFxTLgjafSLim2LojBSwfg5feBjd+SqyiwdGkzC38UPdZy3zgrHMI2CoTf5fJL38tbHMYWVzIH8BxGqJw==}
+  magic-string@1.4.2:
+    resolution: {integrity: sha512-vG+rjFRj1PqdIBozIxAGMjPlOhaVe+GXpbttY/iSK7rGcJRMlwNJO7dcUwmUqkymsFLJiNGI06t4D7Fr7yRC9g==}
 
   make-error@1.3.6:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
@@ -2781,18 +2784,18 @@ snapshots:
       cborg: 4.5.8
       tslib: 2.8.1
 
-  '@atproto/lex-client@0.3.2':
-    dependencies:
-      '@atproto/lex-data': 0.1.7
-      '@atproto/lex-json': 0.1.6
-      '@atproto/lex-schema': 0.2.4
-      tslib: 2.8.1
-
   '@atproto/lex-client@0.3.3':
     dependencies:
       '@atproto/lex-data': 0.1.7
       '@atproto/lex-json': 0.1.6
       '@atproto/lex-schema': 0.2.5
+      tslib: 2.8.1
+
+  '@atproto/lex-client@0.3.6':
+    dependencies:
+      '@atproto/lex-data': 0.1.7
+      '@atproto/lex-json': 0.1.6
+      '@atproto/lex-schema': 0.2.7
       tslib: 2.8.1
 
   '@atproto/lex-data@0.1.7':
@@ -2823,10 +2826,10 @@ snapshots:
       '@atproto/lex-data': 0.1.7
       tslib: 2.8.1
 
-  '@atproto/lex-password-session@0.1.10':
+  '@atproto/lex-password-session@0.2.3':
     dependencies:
-      '@atproto/lex-client': 0.3.2
-      '@atproto/lex-schema': 0.2.4
+      '@atproto/lex-client': 0.3.6
+      '@atproto/lex-schema': 0.2.7
       tslib: 2.8.1
 
   '@atproto/lex-resolver@0.2.8':
@@ -2841,17 +2844,17 @@ snapshots:
       '@atproto/syntax': 0.7.4
       tslib: 2.8.1
 
-  '@atproto/lex-schema@0.2.4':
-    dependencies:
-      '@atproto/lex-data': 0.1.7
-      '@atproto/syntax': 0.7.3
-      '@standard-schema/spec': 1.1.0
-      tslib: 2.8.1
-
   '@atproto/lex-schema@0.2.5':
     dependencies:
       '@atproto/lex-data': 0.1.7
       '@atproto/syntax': 0.7.4
+      '@standard-schema/spec': 1.1.0
+      tslib: 2.8.1
+
+  '@atproto/lex-schema@0.2.7':
+    dependencies:
+      '@atproto/lex-data': 0.1.7
+      '@atproto/syntax': 0.7.6
       '@standard-schema/spec': 1.1.0
       tslib: 2.8.1
 
@@ -2889,12 +2892,12 @@ snapshots:
       iso-datestring-validator: 2.2.2
       tslib: 2.8.1
 
-  '@atproto/syntax@0.7.3':
+  '@atproto/syntax@0.7.4':
     dependencies:
       iso-datestring-validator: 2.2.2
       tslib: 2.8.1
 
-  '@atproto/syntax@0.7.4':
+  '@atproto/syntax@0.7.6':
     dependencies:
       iso-datestring-validator: 2.2.2
       tslib: 2.8.1
@@ -3042,6 +3045,8 @@ snapshots:
   '@jridgewell/resolve-uri@3.1.2': {}
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
+
+  '@jridgewell/sourcemap-codec@1.6.0': {}
 
   '@jridgewell/trace-mapping@0.3.31':
     dependencies:
@@ -3237,19 +3242,19 @@ snapshots:
     dependencies:
       acorn: 8.16.0
 
-  '@sveltejs/adapter-static@4.0.0-next.4(@sveltejs/kit@3.0.0-next.27(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))':
+  '@sveltejs/adapter-static@4.0.0-next.4(@sveltejs/kit@3.0.0-next.30(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))':
     dependencies:
-      '@sveltejs/kit': 3.0.0-next.27(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))
+      '@sveltejs/kit': 3.0.0-next.30(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))
 
-  '@sveltejs/kit@3.0.0-next.27(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))':
+  '@sveltejs/kit@3.0.0-next.30(@sveltejs/vite-plugin-svelte@7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.56.8(@typescript-eslint/types@8.66.0))(typescript@6.0.3)(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       '@standard-schema/spec': 1.1.0
       '@sveltejs/vite-plugin-svelte': 7.2.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))(vite@8.2.0(@types/node@24.11.0)(esbuild@0.27.3)(jiti@2.7.0))
       cookie: 2.0.1
-      devalue: 5.9.0
+      devalue: 5.9.4
       esm-env: 1.2.2
-      magic-string: 1.2.0
+      magic-string: 1.4.2
       mrmime: 2.0.1
       sirv: 3.0.2
       svelte: 5.56.8(@typescript-eslint/types@8.66.0)
@@ -3743,7 +3748,7 @@ snapshots:
 
   devalue@5.8.1: {}
 
-  devalue@5.9.0: {}
+  devalue@5.9.4: {}
 
   devlop@1.1.0:
     dependencies:
@@ -4267,9 +4272,9 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  magic-string@1.2.0:
+  magic-string@1.4.2:
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.5
+      '@jridgewell/sourcemap-codec': 1.6.0
 
   make-error@1.3.6: {}
 
