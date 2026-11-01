@@ -57,7 +57,7 @@
 		"#lib/*": "./src/lib/*"
 	},
 	"dependencies": {
-		"@atproto/lex": "^0.3.3",
+		"@atproto/lex": "^0.4.0",
 		"@atproto/lex-password-session": "^0.1.10",
 		"@mastrojs/atproto": "jsr:^0.2.2",
 		"@resvg/resvg-js": "^2.6.2",
