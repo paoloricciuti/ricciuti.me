@@ -19,8 +19,6 @@ My name is Paolo Ricciuti and I come from a small city in Italy, I am ~ `new Dat
 
 I have a computer science degree and I started developing when I was 17 years (with PHP 4 😱).
 
-Nowadays I work at [Mainmatter](https://mainmatter.com) as Fullstack Senior Software Engineer.
-
-I love Svelte 🧡 and I'm fortunate enough to work with it. I'm also one of the Svelte Ambassadors. As of September of 2024 i've also joined the svelte core team as a maintainer so you'll likely see me around in the svelte github repo.
+Nowadays I'm primarily focused on Svelte, I'm part of the Svelte core team and also a Svelte Ambassador: if it has the word Svelte in it you can bet I'm probably involved in some way.
 
 </main>
